@@ -13,10 +13,11 @@ Penelope addresses the challenges faced by both vendors and customers in the ret
 Have you ever struggled with poorly presented product listings or spent hours trying to find the right product online? Penelope is here to change that. Our digital shopping assistant replaces the need for offsite research by asking the right questions, understanding your needs, and providing personalized recommendations. With Penelope, finding the perfect product is no longer a guessing game—it’s a seamless experience.
 
 ### Design
+A simple overview of the application's atchitecture.
 
 ![A website design flow chart on a whiteboard](2024-08-29_PenelopeApplicationDesign.jpg)
 
-The system architecture supports product listing improvements for vendors and tailored shopping recommendations for customers, all powered by AI and machine learning algorithms. While this design and project will be focused on developing the core features of Penelope, there will be many opportunities to add and enhance the application in the future.
+The system architecture supports tailored shopping recommendations for customers, all powered by AI and machine learning algorithms. While this design and project will be focused on developing the core features of Penelope, there will be many opportunities to add and enhance the application in the future.
 
 ## Key Features
 
