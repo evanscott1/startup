@@ -14,7 +14,7 @@ Have you ever struggled with poorly presented product listings or spent hours tr
 
 ### Design
 
-![Mock](2024-08-29_PenelopeApplicationDesign.jpg)
+![A website design flow chart on a whiteboard](2024-08-29_PenelopeApplicationDesign.jpg)
 
 The system architecture supports product listing improvements for vendors and tailored shopping recommendations for customers, all powered by AI and machine learning algorithms. While this design and project will be focused on developing the core features of Penelope, there will be many opportunities to add and enhance the application in the future.
 
