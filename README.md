@@ -1,6 +1,6 @@
 # Penelope
 
-Penelope Inc. helps retail customers find the exact product they need using an online digital shopping assistant. Leveraging AI, Penelope not only organizes products into a digital directory but also makes intelligent, context-aware recommendations. The traditional search bar is outdated—Penelope ushers in the era of the digital shopping assistant.
+Penelope helps retail customers find the exact product they need using an online digital shopping assistant. Leveraging AI, Penelope not only organizes products into a digital directory but also makes intelligent, context-aware recommendations. The traditional search bar is outdated—Penelope ushers in the era of the digital shopping assistant.
 
 ## Overview
 
