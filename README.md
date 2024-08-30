@@ -30,6 +30,10 @@ Penelope utilizes a range of modern technologies to deliver a unique shopping ex
 
 - **HTML & CSS**: Structured pages with responsive design tailored for both desktop and mobile users.
 - **React**: Component-driven architecture for dynamic, interactive interfaces.
-- **AI & Machine Learning**: Powers the shopping assistant’s recommendation engine, utilizing natural language processing (NLP) to understand and respond to customer needs.
+- **Service**: Powers the shopping assistant’s recommendation engine, utilizing natural language processing (NLP) to understand and respond to customer needs. Backend service with endpoints for:
+    - login
+    - NLP processing
+    - search processing
+    - collecting feedback
 - **Database Integration**: Manages user profiles, product details, and interaction data securely.
-- **WebSocket**: Provides real-time updates to users on community feedback.
+- **WebSocket**: Provides real-time customer service chats.
