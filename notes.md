@@ -17,3 +17,7 @@ of more secure web protocols that are not available to an IP address on its own.
 Can use Caddy which will connect with Let's Encrypt to create a web certificate to allow HTTPS.
 
 The console terminal can be used to do a lot of really helpful changes to files and do so quickly.
+
+HTML is about structuring a web page and providing content.
+
+CSS is used to style web pages.
