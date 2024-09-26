@@ -23,3 +23,5 @@ HTML is about structuring a web page and providing content.
 CSS is used to style web pages.
 
 HTML can be used to create forms that accept user data and send it to a server.
+
+Caddy can be used to direct domain name traffice to a specific subdomain that accesses a service directory on the server.
