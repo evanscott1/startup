@@ -10,15 +10,16 @@
 
 
 <body>
+    <div><span>John Does</span></div>
     <header>
-    <nav>
-        <ul>
-            <li>Home</li>
-            <li>Profile</li>
-            <li>About</li>
-        </ul>
-    </nav>
-</header>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>Profile</li>
+                <li>About</li>
+            </ul>
+        </nav>
+    </header>
     <main>
         <h1>Create Vendor Account</h1>
         <form action="">
@@ -30,15 +31,17 @@
 
             <label for="name">Email:</label>
             <input type="email" id="email" name="email" placeholder="Your Email" required>
-    
+
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Password" required minlength="8">
-    
+
             <label for="password">Confirm Password:</label>
-            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required minlength="8">
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required
+                minlength="8">
 
             <label for="company-description">Company Description:</label>
-            <textarea type="text" id="company-description" name="company-description" placeholder="Your Description" rows="4"></textarea>
+            <textarea type="text" id="company-description" name="company-description" placeholder="Your Description"
+                rows="4"></textarea>
 
             <button type="submit">Create Account</button>
         </form>
