@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
+
+
+<body>
 <header>
     <nav>
         <ul>
@@ -16,22 +19,40 @@
     </nav>
 </header>
 
-<body>
-    <main></main>
-    <section>
+<main>
+    <form action="">
+        <label for="product-name">Product Name:</label>
+        <input type="text" id="product-name" name="product-name" placeholder="Enter product name" required>
 
-    </section>
-    <section>
+        <label for="product-description">Product Description:</label>
+        <textarea id="product-description" name="product-description" placeholder="Enter a detailed description" rows="5" required></textarea>
+    
+        <label for="product-price">Product Price ($):</label>
+        <input type="number" id="product-price" name="product-price" placeholder="Price" min="0" step=".01" required>
+    
+        <label for="product-category">Category:</label>
+        <select name="product-category" id="product-category" required>
+            <option value="">Select a category</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="homegarden">Home & Garden</option>
+            <option value="beautyhealth">Beauty & Health</option>
+            <option value="toys">Toys</option>
+            <option value="other">Other</option>
+        </select>
 
-    </section>
-    <section>
+        <label for="product-quantity">Stock Quantity:</label>
+        <input type="number" id="product-quantity" name="product-quantity" placeholder="Units" min="1" required>
 
-    </section>
-    <section>
+        <label for="product-image">Upload Product Image:</label>
+        <input type="file" id="product-image" name="product-image" accept="image/*" required>
 
-    </section>
-    </main>
+        <label for="product-tags">Product Tags:</label>
+        <input type="text" id="product-tags" name="product-tags" placeholder="'handmade,organic,etc.'">
 
+        <button type="submit">Create Listing</button>
+    </form>
+</main>
     <footer>
         <ul>
             <li>Henri</li>
@@ -39,4 +60,4 @@
     </footer>
 </body>
 
-</html>
+</html> 
