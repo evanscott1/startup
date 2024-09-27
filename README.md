@@ -47,15 +47,20 @@ The design was slightly modified to accomodate the requirements of the HTML deli
 
 ### Details
 
-- **HTML Pages**: Varios HTML pages displaying 3rd party services and database information:
+- [x] **HTML Pages**: Varios HTML pages displaying 3rd party services and database information:
     - An index landing page with an example of the inputs and outputs that will be provided by the LLM.
     - User pages focused on user forms required to track and display user data.
     - Vendor pages focused on vendor forms required to track and display product data.
     - An About Me page that give a brief description of the website and a contact submission form.
-- **Links**: A rudimentary nav bar with links to various core pages- accessible from every page. A rudimentary user bar that has a login/username link. Some pages have static links in the body to relevant database information- these links will be dynamic in the future.
-- **Text**: Static example and filler text on various pages representing database information- these texts will be dynamic in the future.
-- **Images**: Added an example product image to the product page. Added the Henri logo to each page.
-- **DB/Login**: Login page for users with a login form and submit button. Various other forms to modify DB data.
-- **WebSocket**: The count of inventory amounts to ensure that customers do not purchase out of stock items.
+- [x] **Links**: A rudimentary nav bar with links to various core pages- accessible from every page. A rudimentary user bar that has a login/username link. Some pages have static links in the body to relevant database information- these links will be dynamic in the future.
+- [x] **Text**: Static example and filler text on various pages representing database information- these texts will be dynamic in the future.
+- [x] **Images**: Added an example product image to the product page. Added the Henri logo to each page.
+- [x] **DB/Login**: Login page for users with a login form and submit button. Various other forms to modify DB data.
+- [x] **WebSocket**: The count of inventory amounts to ensure that customers do not purchase out of stock items.
 
+## CSS deliverable
+
+### Design
+
+###Details
 
