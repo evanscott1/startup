@@ -62,5 +62,62 @@ The design was slightly modified to accomodate the requirements of the HTML deli
 
 ### Design
 
-###Details
+### Details
 
+- [ ] **Header, footer, and main content body**:
+- [ ] **Navigation elements**:
+- [ ] **Responsive to window resizing**:
+- [ ] **Application elements**:
+- [ ] **Application text content**:
+- [ ] **Application images**:
+
+## React deliverable
+
+### Design
+
+### Details
+
+- [ ] **Bundled and transpiled**:
+- [ ] **Components**:
+    - [ ] **login**:
+    - [ ] **database**:
+    - [ ] **WebSocket**:
+    - [ ] **application logic**:
+- [ ] **Router**:
+- [ ] **Hooks**:
+
+## Service deliverable
+
+### Design
+
+### Details
+
+- [ ] **Node.js/Express HTTP service**:
+- [ ] **Static middleware for frontend**:
+- [ ] **Calls to third party endpoints**:
+- [ ] **Backend service endpoints**:
+- [ ] **Frontend calls service endpoints**:
+
+## DB/Login deliverable
+
+### Design
+
+### Details
+
+- [ ] **MongoDB Atlas database created**:
+- [ ] **Stores data in MongoDB**:
+- [ ] **User registration**:
+- [ ] **existing user**:
+- [ ] **Use MongoDB to store credentials**:
+- [ ] **Restricts functionality**:
+
+## WebSocket deliverable
+
+### Design
+
+### Details
+
+- [ ] **Backend listens for WebSocket connection**:
+- [ ] **Frontend makes WebSocket connection**:
+- [ ] **Data sent over WebSocket connection**:
+- [ ] **WebSocket data displayed**:
