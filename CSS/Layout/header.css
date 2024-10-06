@@ -1,4 +1,7 @@
 .chat-header {
     background-color: #1A5319;
     color: #D6EFD8;
+    text-align: center;
+    padding: 0.5vh;
+    font-size: 1.5em;
 }
