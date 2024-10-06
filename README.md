@@ -61,6 +61,7 @@ The design was slightly modified to accomodate the requirements of the HTML deli
 ## CSS deliverable
 
 ### Design
+https://colorhunt.co/palette/d6efd880af81508d4e1a5319
 
 ### Details
 
