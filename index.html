@@ -8,19 +8,36 @@
     <link rel="stylesheet" href="./CSS/main.css">
 </head>
 
-<body>        
+<body>
     <header class="chat-header">
 
-            <div><span>John Doe</span></div>
-            <div><span><a href="./Components/User/UserLogin.html">Login</a></span></div>
-            <nav>
-                <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./Components/User/UserProfile.html">Profile</a></li>
-                    <li><a href="./Components/About.html">About</a></li>
-                </ul>
-            </nav>
-        </header>
+        <div><span>John Doe</span></div>
+        <div><span><a href="./Components/User/UserLogin.html">Login</a></span></div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./Components/User/UserProfile.html">Profile</a></li>
+                <li><a href="./Components/About.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-container">
+        <div class="menu-top">
+            <button class="menu-button" id="henri-button">New Chat</button>
+            <button class="menu-button" id="profile-button">My Profile</button>
+        </div>
+        <div class="menu-bottom">
+            <h3>Pick up where you left off</h3>
+            <ul class="conversation-list">
+                <li class="conversation-list-item">Neighborhood Party</li>
+                <h3>Yesterday</h3>
+                <li class="conversation-list-item">School Supplies for 3rd grade</li>
+                <h3>Last Week</h3>
+                <li class="conversation-list-item">Birthday gifts for nephew</li>
+                <li class="conversation-list-item">Hydroflask Waterbottle</li>
+            </ul>
+        </div>
+    </div>
     <div class="chat-container">
 
 
@@ -71,11 +88,10 @@
             <p><strong>Product:</strong><a href="./Components/User/ProductCard.html"> Taylor Mini Guitar</a></a></p>
 
         </div>
-            <div class="chat-input">
-                <textarea id="user-input" name="user-query" placeholder="I'm looking for..."
-                    required></textarea>
-                <button id="send-button" type="button">Shop</button>
-            </div>
+        <div class="chat-input">
+            <textarea id="user-input" name="user-query" placeholder="I'm looking for..." required></textarea>
+            <button id="send-button" type="button">Shop</button>
+        </div>
 
 
     </div>

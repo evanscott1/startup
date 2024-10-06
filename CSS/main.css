@@ -1,4 +1,6 @@
 
 @import 'Layout/header.css';
+@import 'Layout/grid.css';
 
-@import 'Pages/chat.css'
+@import 'Pages/Chat/chat.css';
+@import 'Pages/Chat/chat_menu.css';
