@@ -1,4 +1,6 @@
 .chat-header {
+    display: flex;
+    flex-direction: column;
     background-color: #1A5319;
     color: #D6EFD8;
     text-align: center;

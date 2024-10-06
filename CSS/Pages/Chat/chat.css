@@ -1,9 +1,7 @@
 .chat-container {
     width: 75%;
-    margin-left: 25%;
-    height: 90vh;
+    height: 95vh;
     border: 1px solid #ddd;
-    border-radius: 16px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
