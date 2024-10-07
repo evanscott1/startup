@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     background-color: #1A5319;
     color: #D6EFD8;
     text-align: center;
@@ -12,14 +11,38 @@
     position: relative;
 }
 
+.header-button {
+    background-color: #1A5319;
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 0.35em;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+
 .chat-header-henri {
-    padding: 0;
     margin: 0;
     position: relative;
+    left: 20px;
+}
+
+.chat-header-henri:hover {
+    background-color: #508D4E;
 }
 
 .chat-header-login {
+    background-color: #D6EFD8;
+    color: #1A5319;
+    font-size: 0.75em;
     position: absolute;
     right: 20px;
     align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.chat-header-login:hover {
+    background-color: #508D4E;
 }
