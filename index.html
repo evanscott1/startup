@@ -11,6 +11,10 @@
 <body>
     <main>
         <div class="menu-container">
+            <header class="menu-nav">
+                <button class="menu-button" id="menu-toggle-button"></button>
+                <button class="menu-button" id="new-chat-button"></button>
+            </header>
             <div class="menu-top">
                 <button class="menu-button" id="henri-button">New Chat</button>
                 <button class="menu-button" id="profile-button">My Profile</button>
@@ -29,8 +33,11 @@
         </div>
         <div class="chat-container">
             <header class="chat-header">
-                <div class="header-button chat-header-henri">Henri</div>
-                <div><a class="header-button chat-header-login" href="./Components/User/UserLogin.html">Login</a></div>
+                <div class="header-button" id="chat-header-henri">Henri</div>
+                <div>
+                    <a class="header-button" id="chat-header-login" href="./Components/User/UserLogin.html">Log in</a>
+                    <a class="header-button" id="chat-header-signup" href="./Components/User/UserSignUp.html" >Sign Up</a>
+                </div>
             </header>
             <div class="chat-history">
                 <div class="message bot-message">

@@ -1,5 +1,5 @@
 .chat-container {
-    width: 75%;
+    width: 75vw;
     height: 100vh;
     border: none;
     display: flex;
@@ -38,6 +38,7 @@
 .chat-input {
     display: flex;
     padding: 10px;
+    padding-bottom: 0;
     background-color: #D6EFD8;
 
 }
