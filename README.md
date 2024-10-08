@@ -75,7 +75,7 @@ https://colorhunt.co/palette/d6efd880af81508d4e1a5319
 ## React deliverable
 
 ### Design
-
+ TODO: Add a shopping list feature in the bottom right corner of the chat. Make collapsable and allow result elements to be dragged and added to the list.
 ### Details
 
 - [ ] **Bundled and transpiled**:
