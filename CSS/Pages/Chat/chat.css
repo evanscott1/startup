@@ -42,11 +42,11 @@
 
 .chat-input {
     display: flex;
-    height: 10vh;
     padding: 10px;
     padding-bottom: 0;
     background-color: #D6EFD8;
     line-height: 1.5;
+    border-bottom: 2px solid #D6EFD8;
 }
 
 #send-button {
@@ -61,17 +61,15 @@
     color: #fff;
     border: 1px solid black;
 }
-
+/* TODO: add dynamic sizing for the height of the textarea of the user input */
 #user-input {
     flex-grow: 1;
     padding: 10px  10px 10px 25px;
     border: none;
     border-radius: 30px;
+    height: max-content;    
     resize: none;
-    min-height: calc(1em + 20px);
-    max-height: calc(6.5em + 20px);
     overflow-y: auto;
-    line-height: 1.2em;
 }
 
 #user-input::-webkit-scrollbar {
