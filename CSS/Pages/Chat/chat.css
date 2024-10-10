@@ -19,12 +19,12 @@
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 8px;
-    max-width: 90%;
     line-height: 1.5;
 }
 
 .bot-message {
     margin-left: 0%;
+    max-width: 100%;
     align-self: flex-start;
     display: flex;
     align-items: center;
@@ -33,11 +33,11 @@
 .user-message {
     background-color: #fff;
     border-radius: 30px;
-    padding: 0.05em 0.5em 0.25em 1em;
     color: black;
-    align-self: flex-end;
+    align-items: flex-end;
+    width: max-content;
     max-width: 70%;
-    margin-left: 30%;
+    margin-left: auto;
 }
 
 .chat-input {
