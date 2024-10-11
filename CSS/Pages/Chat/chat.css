@@ -38,6 +38,7 @@
     width: max-content;
     max-width: 70%;
     margin-left: auto;
+    margin-top: 0px;
 }
 
 .chat-input {
