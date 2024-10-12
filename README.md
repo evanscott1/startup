@@ -61,21 +61,23 @@ The design was slightly modified to accomodate the requirements of the HTML deli
 ## CSS deliverable
 
 ### Design
-https://colorhunt.co/palette/d6efd880af81508d4e1a5319
+    https://colorhunt.co/palette/d6efd880af81508d4e1a5319
+    TODO: Optimize for mobile.
 
 ### Details
 
-- [ ] **Header, footer, and main content body**:
-- [ ] **Navigation elements**:
-- [ ] **Responsive to window resizing**:
-- [ ] **Application elements**:
-- [ ] **Application text content**:
-- [ ] **Application images**:
+- [x] **Header, footer, and main content body**: Present and accounted for.
+- [x] **Navigation elements**: All styled and functional.
+- [x] **Responsive to window resizing**: Still needs work to be mobile optimized. Has some resizing, but that's based on vh and vw, witch doesn't translate well to certain screen sizes.
+- [x] **Application elements**: Core user features are styled. I believe some need JS/React to fully enable. 
+- [x] **Application text content**: Standard font across the app.
+- [x] **Application images**: Removed images that were previously used-- these will be brought back eventually when the database is able to hold them instead of the Github Repo. Created CSS based logo. Will need to design an image based logo for the tab image.
 
 ## React deliverable
 
 ### Design
- TODO: Add a shopping list feature in the bottom right corner of the chat. Make collapsable and allow result elements to be dragged and added to the list.
+    TODO: Add a shopping list feature in the bottom right corner of the chat. Make collapsable and allow result elements to be dragged and added to the list.
+    TODO: Optimize for mobile.
 ### Details
 
 - [ ] **Bundled and transpiled**:
