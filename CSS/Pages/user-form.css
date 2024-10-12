@@ -36,7 +36,10 @@
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    text-decoration: none;
+}
+
+.userform-button:hover {
+    background-color: #508D4E;
 }
 
 #userform-header-henri {
@@ -89,10 +92,6 @@
     width: 100%;
     margin-top: 10px;
     font-size: 0.8em;
-}
-.userform-form a {
-    text-decoration: none;
-    color: inherit;
 }
 
 .userform-form a:hover {
