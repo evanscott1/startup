@@ -1,8 +1,11 @@
-.login-page {
+.userform-page {
     display: flex;
     flex-direction: column;
+    width: 100vw;
+    height: 100vh;
 }
-.login-container {
+
+.userform-container {
     width: 100vw;
     height: 90vh;
     background-color: #D6EFD8;
@@ -13,7 +16,7 @@
     font-size: 1.5em;
 }
 
-.login-header {
+.userform-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,7 +27,7 @@
     height: 10vh;
 }
 
-.login-button {
+.userform-button {
     background-color: #1A5319;
     color: #fff;
     border: none;
@@ -36,17 +39,14 @@
     text-decoration: none;
 }
 
-#login-header-henri {
+#userform-header-henri {
     margin: 0;
     position: relative;
     left: 20px;
 }
 
-#login-header-henri:hover {
-    background-color: #508D4E;
-}
 
-.login-form {
+.userform-form {
     display: flex;
     flex-direction: column;
     width: 25vw;
@@ -57,19 +57,20 @@
     font-size: 0.5em;
 }
 
-.login-form label {
+.userform-form label {
     margin-bottom: 5px;
     color: #1A5319;
 }
 
-.login-form input {
+.userform-form input, 
+.userform-form textarea {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #1A5319;
     border-radius: 8px;
 }
 
-.login-form button {
+.userform-form button {
     background-color: #1A5319;
     color: #fff;
     border: none;
@@ -78,18 +79,37 @@
     cursor: pointer;
 }
 
-.login-form button:hover {
+.userform-form button:hover {
     background-color: #508D4E;
 }
 
-.login-form div {
+.userform-form div {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-top: 10px;
     font-size: 0.8em;
 }
+.userform-form a {
+    text-decoration: none;
+    color: inherit;
+}
 
-.login-form a:hover {
+.userform-form a:hover {
     color: #508D4E;
+}
+
+.userform-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.userform-form textarea {
+    resize: none;
+}
+
+.userform-form input[readonly] {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    color: #888;
 }
