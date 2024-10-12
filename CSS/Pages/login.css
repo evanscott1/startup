@@ -1,0 +1,95 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+}
+.login-container {
+    width: 100vw;
+    height: 90vh;
+    background-color: #D6EFD8;
+    color: #1A5319;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.login-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1A5319;
+    color: #D6EFD8;
+    padding: 0;
+    font-size: 1.5em;
+    height: 10vh;
+}
+
+.login-button {
+    background-color: #1A5319;
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 0.30em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+#login-header-henri {
+    margin: 0;
+    position: relative;
+    left: 20px;
+}
+
+#login-header-henri:hover {
+    background-color: #508D4E;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(10, 10, 10, 0.1);
+    font-size: 0.5em;
+}
+
+.login-form label {
+    margin-bottom: 5px;
+    color: #1A5319;
+}
+
+.login-form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #1A5319;
+    border-radius: 8px;
+}
+
+.login-form button {
+    background-color: #1A5319;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #508D4E;
+}
+
+.login-form div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+.login-form a:hover {
+    color: #508D4E;
+}

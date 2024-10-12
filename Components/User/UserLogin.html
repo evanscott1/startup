@@ -6,40 +6,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../../CSS/main.css">
 </head>
 
 <body>
-    <header>
-        <div>
-            <img src="./Assets/HenriLogo.png" alt="Henri Logo" width="100">
+    <main class="login-page">
+        <header class="login-header">
+            <div class="login-button" id="login-header-henri"><a href="../../index.html">Henri</a></div>
+        </header>
+        <div class="login-container">
+
+
+            <form class="login-form" action="">
+                <label for="name">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required minlength="8">
+
+                <button type="submit">Login</button>
+                <div>
+                    <a href="#">Forgot Password?</a>
+                    <a href="./UserSignup.html">Sign Up</a>
+                </div>
+            </form>
+            <footer>
+            </footer>
         </div>
-        <div><span>John Doe</span></div>
-        <div><span><a href="./UserLogin.html">Login</a></span></div>
-        <nav>
-            <ul>
-                <li><a href="../../index.html">Home</a></li>
-                <li><a href="./UserProfile.html">Profile</a></li>
-                <li><a href="../About.html">About</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Login</h2>
-        <form action="">
-            <label for="name">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Password" required minlength="8">
-
-            <button type="submit">Login</button>
-        </form>
     </main>
-    <footer>
-        <ul>
-            <li>Henri</li>
-        </ul>
-    </footer>
+
 </body>
 
 </html>
