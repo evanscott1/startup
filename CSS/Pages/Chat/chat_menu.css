@@ -21,16 +21,34 @@
     background-color: #1A5319;
 }
 
+.menu-nav a {
+    background-color: #1A5319;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 5%;
+}
+
+.menu-nav a:hover {
+    background-color: #508D4E;
+}
+
 .menu-top {
     display: flex;
     flex-direction: column;
+    font-weight: bold;
+}
+
+/* placeholder */
+.menu-top div {
+    height: 20vh;
 }
 
 .menu-button {
     background-color: #1A5319;
     color: #fff;
     border: none;
-    padding: 5%;
     border-radius: 8px;
     cursor: pointer;
 }
@@ -53,12 +71,7 @@
     margin: 0;
 }
 
-#menu-toggle-button {
-
+.conversation-list a {
+    display: block;
+    padding: 5%;
 }
-
-#new-chat-button {
-
-}
-
-.conversation-list-item {}

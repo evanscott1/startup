@@ -33,6 +33,14 @@
     background-color: #508D4E;
 }
 
+#chat-header-profile {
+    
+}
+
+#chat-header-profile:hover {
+    background-color: #508D4E;
+}
+
 #chat-header-login {
     background-color: #D6EFD8;
     color: #1A5319;
