@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henri</title>
-    <link rel="stylesheet" href="./CSS/main.css">
+    <link rel="stylesheet" href="../../../CSS/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
@@ -48,7 +48,83 @@
                     <div id="logo"></div>
                     <p><strong>Henri:</strong> How can I assist you today?</p>
                 </div>
+                <div class="message user-message">
+                    I need to find a new water bottle. I've had several different brands with various features, straws, etc. What really pisses me off is how they all leak in my bag. Do you know of a good brand that will reliably hold water?
+                </div>
+                <div class="message bot-message">
+                    <div id="logo"></div>
+                    <div>
+                        <p><strong>Henri:</strong> I totally understand your frustration—there’s nothing worse than a water bottle that leaks in your bag! Don’t worry, I’ve got a few reliable, leak-proof options that can help put an end to that problem. Here are some great water bottles known for their durability and leak-proof designs:</p>
+                        <ul>
+                            <li><button class="learn-more-button">Hydro Flask Standard Mouth with Flex Cap</button> – Insulated, keeps drinks cold for up to 24 hours, and the <strong>Flex Cap</strong> is completely leak-proof. Price: <strong>$32.95</strong>.</li>
+                            <li><button class="learn-more-button">Nalgene Tritan Wide Mouth Bottle</button> – BPA-free plastic, lightweight, durable, with a <strong>leak-proof screw-on cap</strong>. Price: <strong>$14.99</strong>.</li>
+                            <li><button class="learn-more-button">Contigo Autoseal Water Bottle</button> – The <strong>Autoseal lid</strong> prevents leaks and spills, with a built-in straw. Price: <strong>$20.99</strong>.</li>
+                            <li><button class="learn-more-button">CamelBak Chute Mag Water Bottle</button> – The <strong>magnetic cap</strong> screws on tightly and is leak-proof. Price: <strong>$14.00</strong>.</li>
+                        </ul>
+                        <p>Which one of these sounds like it could be a good fit for you, or would you like more information on one of the bottles?</p>
+                    </div>
+                </div>
+                <div class="message user-message">
+                    I know about Hydro Flasks because people are always dropping and denting them. My uncle always uses Nalgene bottles when we go kayaking.
+                </div>
+                <div class="message bot-message">
+                    <div id="logo"></div>
+                    <div>
+                        <p><strong>Henri:</strong> Ah, got it! Hydro Flasks are super popular, but I totally understand the concern about denting. As for the <button class="learn-more-button">Nalgene Tritan Wide Mouth Bottles</button>, they’re definitely a go-to for outdoor activities like kayaking—super durable, lightweight, and resistant to pretty much anything, which is why your uncle probably loves them.</p>
+                        <p>If you’re looking for something just as reliable, but perhaps want to try something different, the <button class="learn-more-button">Contigo Autoseal</button> or <button class="learn-more-button">CamelBak Chute Mag</button> could be great alternatives. Both are known for their leak-proof designs and durability, without the risk of denting like the Hydro Flask.</p>
+                        <p>Would you like to go with one of these options or stick with the Nalgene? I can help you order whichever you prefer!</p>
+                    </div>
+                </div>
+                <div class="message user-message">
+                    I guess let's try the Nalgene bottle.
+                </div>
+                <div class="message bot-message">
+                    <div id="logo"></div>
+                    <div>
+                        <p><strong>Henri:</strong> Excellent choice! The <strong>Nalgene Tritan Wide Mouth Bottle</strong> is a solid, reliable option that should put an end to those leaks in your bag.</p>
+                        <p>The bottle is priced at <strong>$14.99</strong>. Would you like me to go ahead and add it to your cart and proceed with the checkout using the same payment method as before?</p>
+                    </div>
+                </div>
+                <div class="message user-message">
+                    What color is it?
+                </div>
+                <div class="message bot-message">
+                    <div id="logo"></div>
+                    <div>
+                        <p><strong>Henri:</strong> The <strong>Nalgene Tritan Wide Mouth Bottle</strong> comes in a variety of colors, including:</p>
+                        <ul>
+                            <li><strong>Clear</strong></li>
+                            <li><strong>Blue</strong></li>
+                            <li><strong>Green</strong></li>
+                            <li><strong>Purple</strong></li>
+                            <li><strong>Red</strong></li>
+                            <li><strong>Gray Smoke</strong></li>
+                        </ul>
+                        <p>Do any of these colors catch your eye?</p>
+                    </div>
+                </div>
+                <div class="message user-message">
+                    Is there orange?
+                </div>
+                <div class="message bot-message">
+                    <div id="logo"></div>
+                    <div>
+                        <p><strong>Henri:</strong> Yes! The <strong>Nalgene Tritan Wide Mouth Bottle</strong> does come in <strong>Orange</strong>. Would you like me to add the orange one to your cart and proceed with checkout?</p>
+                    </div>
+                </div>
+                <div class="message user-message">
+                    Yes. Add and checkout. Use my normal card.
+                </div>
+                <div class="message bot-message">
+                    <div id="logo"></div>
+                    <div>
+                        <p><strong>Henri:</strong> Great choice! I’ve added the <strong>Orange Nalgene Tritan Wide Mouth Bottle</strong> to your cart for <strong>$14.99</strong>.</p>
+                        <p>Proceeding with checkout using your normal payment method… Done! Your order has been successfully placed, and you’ll receive a confirmation email shortly with all the details.</p>
+                        <p>Is there anything else I can assist you with today?</p>
+                    </div>
+                </div>
             </div>
+            
             <div class="chat-input">
                 <textarea id="user-input" name="user-query" placeholder="I'm looking for..." required></textarea>
                 <button id="send-button" type="button"><i class="material-symbols-outlined">search</i></button>
