@@ -76,6 +76,7 @@ In this example:
 
 #title styles the element with the id="title" to make the text bold and larger.
 .grid applies grid styling to all elements with the class grid.
+
 4. In the following code, what is the difference between padding and margin?
 Padding is the space between the content and the element’s border.
 Margin is the space outside the element’s border, affecting the distance between the element and other elements.
@@ -153,6 +154,7 @@ Arrow functions have a few key characteristics:
 They are anonymous (no name by default).
 They have a more concise syntax.
 They do not bind their own this value, instead, they inherit it from the surrounding context.
+
 8. What does the following code using map with an array output?
 The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
 
@@ -183,6 +185,7 @@ In this example:
 
 When the button with the ID myButton is clicked, it will log the message "Button clicked!" to the console.
 The code adds a click event listener to the button that triggers the log message when the button is clicked.
+
 10. What does the following line of JavaScript do using a # selector?
 In CSS and JavaScript, the # selector refers to an element by its ID. JavaScript uses the document.querySelector() method to select an element by its ID when using the # selector.
 
@@ -212,6 +215,7 @@ This is true. The DOM is an in-memory representation of the HTML, which reflects
 You can use the DOM to access and change styles, structure, and attributes of elements.
 
 This is true. The DOM allows manipulation of an element’s CSS styles, attributes, and even the structure of the document itself (e.g., adding/removing nodes).
+
 12. By default, the HTML span element has a default CSS display property value of:
 The default CSS display value for a span element is inline.
 
@@ -222,6 +226,7 @@ html
 Explanation:
 
 span elements are inline by default, meaning they do not start on a new line and only take up as much width as necessary.
+
 13. How would you use CSS to change all the div elements to have a background color of red?
 You can target all div elements in CSS by using the div selector and setting the background-color property.
 
@@ -245,6 +250,7 @@ html
 In this example:
 
 The image (image.jpg) will act as a hyperlink, and when clicked, it will navigate to https://www.example.com.
+
 15. In the CSS box model, what is the ordering of the box layers starting at the inside and working out?
 The CSS box model layers are ordered as follows (from the inside to the outside):
 
@@ -309,6 +315,7 @@ document.querySelector("#byu").style.color = "green";
 Explanation:
 
 This code selects the element with the ID byu and changes its color style property to green.
+
 19. What is the opening HTML tag for a paragraph, ordered list, unordered list, second-level heading, first-level heading, and third-level heading?
 Here are the correct opening tags for each element:
 
@@ -333,6 +340,7 @@ html
 <h1>This is a first-level heading</h1>
 <h2>This is a second-level heading</h2>
 <h3>This is a third-level heading</h3>
+
 20. How do you declare the document type to be HTML?
 The document type declaration (DOCTYPE) is placed at the very beginning of the HTML document to tell the browser which version of HTML is being used. For HTML5, the declaration is:
 
@@ -393,6 +401,7 @@ const animal = {
 Explanation:
 
 This creates an object animal with properties type, name, and sound.
+
 23. Is it possible to add new properties to JavaScript objects?
 Yes, it is possible to add new properties to existing JavaScript objects.
 
@@ -405,6 +414,7 @@ console.log(animal.name);  // Output: "crow"
 Explanation:
 
 You can add a new property (name) to the animal object after it is created.
+
 24. If you want to include JavaScript on an HTML page, which tag do you use?
 To include JavaScript on an HTML page, you use the <script> tag.
 
@@ -421,6 +431,7 @@ html
 Explanation:
 
 The <script> tag is used to either embed JavaScript directly in the HTML document or to reference an external JavaScript file.
+
 25. Given the following HTML, what JavaScript could you use to set the text "animal" to "crow" and leave the "fish" text unaffected?
 Example HTML:
 
@@ -462,6 +473,7 @@ json
   "isStudent": false,
   "hobbies": ["reading", "music"]
 }
+
 27. What does the console command chmod, pwd, cd, ls, vim, nano, mkdir, mv, rm, man, ssh, ps, wget, sudo do?
 Here’s what each console command does:
 
@@ -507,6 +519,7 @@ Example: wget http://example.com/file.zip downloads file.zip from example.com.
 sudo: Executes a command with superuser (administrator) privileges.
 
 Example: sudo apt-get update updates the package list with superuser privileges.
+
 28. Which of the following console commands creates a remote shell session?
 The command that creates a remote shell session is ssh.
 
@@ -517,6 +530,7 @@ ssh user@remote_host
 Explanation:
 
 ssh (Secure Shell) is used to securely log into a remote system and start a session where you can execute commands as if you were sitting at the remote machine.
+
 29. Which of the following is true when the -la parameter is specified for the ls console command?
 The -la parameter for the ls command means:
 
@@ -544,6 +558,7 @@ Explanation:
 
 HTTPS (Hypertext Transfer Protocol Secure) is the secure version of HTTP. It uses SSL/TLS encryption to protect the communication between the browser and the server. For a website to serve content over HTTPS, it must have an SSL/TLS certificate installed, which is issued by a Certificate Authority (CA).
 Without a valid certificate, browsers will warn users that the connection is not secure, and HTTPS won’t work properly.
+
 32. Can a DNS A record point to an IP address or another A record?
 A DNS A record can only point to an IP address, not another A record.
 
@@ -552,6 +567,7 @@ Explanation:
 A DNS A (Address) record maps a domain name to an IP address (IPv4). It cannot point to another A record directly.
 To achieve functionality similar to pointing to another A record, you would use a CNAME record (Canonical Name), which points one domain name to another domain name.
 33. Port 443, 80, 22 is reserved for which protocol?
+
 Here is the mapping of ports to their respective protocols:
 
 Port 443: HTTPS (Hypertext Transfer Protocol Secure)
@@ -562,6 +578,7 @@ Explanation:
 Port 443 is the standard port for HTTPS, which ensures secure communication over SSL/TLS.
 Port 80 is used for standard HTTP traffic.
 Port 22 is used for SSH, which allows secure remote login to a computer.
+
 34. What will the following code using Promises output when executed?
 Let’s assume an example of code using Promises. Here’s a typical example:
 
