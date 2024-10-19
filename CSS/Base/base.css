@@ -1,0 +1,58 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 100%; /* 1rem = 16px by default */
+}
+
+body {
+    font-size: 1.5em;
+}
+
+main {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+textarea, button {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 10px; /* Easier for touch */
+}
+
+/* Responsive font size adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 1.2em;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        font-size: 1.6em;
+    }
+}

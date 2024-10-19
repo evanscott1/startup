@@ -1,24 +1,46 @@
+/* Base styles for mobile-first design */
 .menu-container {
     width: 20vw;
     height: 100vh;
+    height: auto; /* Adjust height for mobile */
     background-color: #1A5319;
     color: #fff;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0; /* Prevent shrinking */
+    position: relative; /* Allow it to toggle visibility */
+    z-index: 1000; /* Ensure menu is above content */
+    transform: translateX(-100%); /* Hidden by default */
+}
 
+.menu-container.open {
+    transform: translateX(0); /* Slide into view when open */
+}
+
+/* Style for burger button */
+.burger-button {
+    background-color: #1A5319;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    display: inline-flex;
+}
+
+.burger-button:hover {
+    background-color: #508D4E;
 }
 
 .menu-nav {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    padding: 10px;
     background-color: #1A5319;
     color: #D6EFD8;
-    padding: 0;
     font-size: 1.5em;
     height: 10vh;
-    background-color: #1A5319;
 }
 
 .menu-nav a {
@@ -26,23 +48,19 @@
     color: #fff;
     border: none;
     border-radius: 8px;
+    padding: 10px;
     cursor: pointer;
-    padding: 5%;
+    display: flex;
+    align-items: center;
 }
 
 .menu-nav a:hover {
     background-color: #508D4E;
 }
 
-.menu-top {
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-}
-
-/* placeholder */
+/* Placeholder space in menu-top */
 .menu-top div {
-    height: 20vh;
+    height: 20vh; /* Space on top for mobile */
 }
 
 .menu-button {
@@ -51,6 +69,8 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 .menu-button:hover {
@@ -58,11 +78,13 @@
 }
 
 .menu-bottom {
+    flex-grow: 1;
     overflow-y: auto;
 }
 
-.menu-bottom h1, h2, h3, h4, h5, h6 {
+.menu-bottom h1, h2, h3 {
     padding-left: 5%;
+    margin-bottom: 0.5em;
 }
 
 .conversation-list {
@@ -73,5 +95,64 @@
 
 .conversation-list a {
     display: block;
-    padding: 5%;
+    padding: 10px;
+    background-color: #1A5319;
+    color: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.conversation-list a:hover {
+    background-color: #508D4E;
+}
+
+/* Media queries for tablets and larger screens */
+@media (min-width: 768px) {
+    .menu-container {
+        width: 20vw; /* Always visible by default */
+        transform: translateX(0); /* Open by default */
+        position: static;
+        transition: transform 0.3s ease;
+    }
+
+    .menu-container.open {
+        transform: translateX(-100%); /* Hidden when "open" class is added */
+    }
+
+    .menu-top div {
+        height: auto;
+    }
+
+}
+
+/* Menu behavior on small screens */
+@media (max-width: 768px) {
+    .menu-container {
+        transform: translateX(-100%); /* Hidden by default */
+        position: absolute;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+    }
+
+    .menu-container.open {
+        transform: translateX(0); /* Slide into view when open */
+    }
+}
+
+@media (min-width: 1024px) {
+    .menu-nav {
+        font-size: 1.2em;
+        padding: 15px;
+    }
+
+    .menu-bottom h1, h2, h3 {
+        font-size: 1.2em;
+        padding-left: 10%;
+    }
+
+    .conversation-list a {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
 }
