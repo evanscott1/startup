@@ -7,14 +7,15 @@
     <title>Henri</title>
     <link rel="stylesheet" href="./CSS/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script type="module" src="js/chat-menu.js"></script>
 </head>
 
 <body>
     <main>
         <div class="menu-container">
             <header class="menu-nav">
-                <a href="#"><i class="material-symbols-outlined">menu</i></a>
-                <a href="./index.html"><i class="material-symbols-outlined">stylus</i></a>
+                <button id="toggleMenuClose"><i class="material-symbols-outlined">menu</i></button>
+                <a href="./index.html" id="menuOpenNewChat"><i class="material-symbols-outlined">stylus</i></a>
             </header>
             <div class="menu-top">
                 <div></div>
@@ -37,9 +38,14 @@
         </div>
         <div class="chat-container">
             <header class="chat-header">
+                <div>
+                <button id="toggleMenuOpen"><i class="material-symbols-outlined">menu</i></button>
+                <a href="./index.html" id="menuClosedNewChat"><i class="material-symbols-outlined">stylus</i></a>
+                </div>
+
                 <a class="header-button" id="chat-header-henri" href="./index.html">Henri</a>
                 <div>
-                    <a class="header-button" id="chat-header-profile" href="./Components/User/UserProfile.html"><i class="material-symbols-outlined">account_circle</i></a>                   
+                    <a class="header-button" id="chat-header-profile" href="./Components/User/UserLogin.html"><i class="material-symbols-outlined">account_circle</i></a>                   
                     <a class="header-button" id="chat-header-login" href="./Components/User/UserLogin.html">Log in</a>
                     <a class="header-button" id="chat-header-signup" href="./Components/User/UserSignup.html">Sign
                         Up</a>

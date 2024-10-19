@@ -103,3 +103,7 @@
 .learn-more-button:hover {
     background-color: #80AF81;
 }
+
+@media (max-width: 768px) {
+    
+}

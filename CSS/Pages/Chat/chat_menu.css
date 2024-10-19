@@ -75,3 +75,42 @@
     display: block;
     padding: 5%;
 }
+@media (max-width: 768px) {
+    .menu-container {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .menu-container {
+        display: none;
+    }
+
+    #toggleMenuOpen {
+        display: block;
+    }
+
+    #toggleMenuClose {
+        display: none;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .menu-container {
+        display: block;
+    }
+
+    #toggleMenuOpen {
+        display: none;
+    }
+
+    #toggleMenuClose {
+        display: block;
+    }
+
+    #menuClosedNewChat {
+        display: none;
+    }
+}
+

@@ -66,3 +66,19 @@
     color: #fff;
     border-color: #508D4E;
 }
+
+@media (max-width: 768px) {
+    #chat-header-signup {
+        display: none;
+    }
+
+    #chat-header-login {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    #chat-header-profile {
+        display: none;
+    }
+}
