@@ -6,4 +6,8 @@ export function showElement(element) {
   export function hideElement(element) {
     element.style.display = 'none';
   }
+
+export function setElementWidth(element, w) {
+    element.style.width = `${w}`;
+}
   
