@@ -1,5 +1,5 @@
 .chat-container {
-    width: 80vw;
+    flex-grow: 1;
     height: 100vh;
     border: none;
     display: flex;
@@ -7,9 +7,13 @@
     overflow: hidden;
 }
 
+.openMenuContainer {
+    display: flex;
+
+}
+
 .chat-history {
     flex-grow: 1;
-    height: 77vh;
     overflow-y: auto;
     padding: 1vw;
     background-color: #D6EFD8;

@@ -1,11 +1,12 @@
 .menu-container {
-    width: 20vw;
+    width: 20rem;
     height: 100vh;
     background-color: #1A5319;
     color: #fff;
     display: flex;
     flex-direction: column;
-
+    flex-shrink: 0;
+    overflow: hidden;
 }
 
 .menu-nav {
@@ -17,8 +18,7 @@
     color: #D6EFD8;
     padding: 0;
     font-size: 1.5em;
-    height: 10vh;
-    background-color: #1A5319;
+    height: 3.5rem;
 }
 
 .menu-nav a {
@@ -34,6 +34,11 @@
     background-color: #508D4E;
 }
 
+.menu-container-scroll {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
 .menu-top {
     display: flex;
     flex-direction: column;
@@ -42,7 +47,7 @@
 
 /* placeholder */
 .menu-top div {
-    height: 20vh;
+    height: 10rem;
 }
 
 .menu-button {
@@ -57,9 +62,6 @@
     background-color: #508D4E;
 }
 
-.menu-bottom {
-    overflow-y: auto;
-}
 
 .menu-bottom h1, h2, h3, h4, h5, h6 {
     padding-left: 5%;
@@ -75,6 +77,7 @@
     display: block;
     padding: 5%;
 }
+
 @media (max-width: 768px) {
     .menu-container {
         display: none;

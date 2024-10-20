@@ -83,18 +83,17 @@ function setWidthBasedOnMenu() {
                 hideElement(chat);
                 break;
             case ('tablet'):
-                setElementWidth(chat, '80vw');
-                setElementWidth(menu, '20vw');
+
+                setElementWidth(menu, '20rem');
                 break;
             case ('desktop'):
-                setElementWidth(chat, '80vw');
-                setElementWidth(menu, '20vw');
+
+                setElementWidth(menu, '20rem');
                 break;
             default:
                 console.log('Could not get screen width');
                 break;
         }
-
 }
 
 function handleResize() {

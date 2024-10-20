@@ -1,6 +1,6 @@
 // utils.js
 export function showElement(element) {
-    element.style.display = 'block';
+    element.style.display = 'flex';
   }
   
   export function hideElement(element) {
