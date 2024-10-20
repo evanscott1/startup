@@ -1,5 +1,5 @@
 // Import the utility functions
-import { showElement, hideElement, setElementWidth } from './utils.js';
+import { showElement, hideElement, setElementWidth } from './Utils.js';
 
 // Select menu DOM elements
 const menu = document.querySelector('.menu-container');
@@ -83,11 +83,9 @@ function setWidthBasedOnMenu() {
                 hideElement(chat);
                 break;
             case ('tablet'):
-
                 setElementWidth(menu, '20rem');
                 break;
             case ('desktop'):
-
                 setElementWidth(menu, '20rem');
                 break;
             default:
