@@ -7,35 +7,64 @@
     <title>Henri</title>
     <link rel="stylesheet" href="../../../CSS/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script type="module" src="../../../JS/chat-menu.js"></script>
+    <script type="module" src="../../../JS/search-bar.js"></script>
 </head>
 
 <body>
-    <main>
+    <main id="chat-page">
         <div class="menu-container">
             <header class="menu-nav">
-                <a href="#"><i class="material-symbols-outlined">menu</i></a>
-                <a href="../../../index.html"><i class="material-symbols-outlined">stylus</i></a>
+                <button type="button" id="toggleMenuClose"><i class="material-symbols-outlined"><span class="menu-nav-button">menu</span></i></button>
+                <a href="../../../index.html" id="menuOpenNewChat"><i class="material-symbols-outlined"><span class="menu-nav-button">stylus</span></i></a>
             </header>
-            <div class="menu-top">
-                <div></div>
-            </div>
-            <div class="menu-bottom">
-                <h2>History</h2>
-                <ul class="conversation-list">
-                    <li class="menu-button conversation-list-item"><a href="./NeighborhoodExample.html">Neighborhood Party</a></li>
-                    <h3>Yesterday</h3>
-                    <li class="menu-button conversation-list-item"><a href="./SchoolExample.html">School Supplies for 3rd grade</a></li>
-                    <h3>Last Week</h3>
-                    <li class="menu-button conversation-list-item"><a href="./GiftExample.html">Birthday Gifts for Nephew</a></li>
-                    <li class="menu-button conversation-list-item"><a href="./Waterbottle.html">Waterbottle Shopping</a></li>
-                </ul>
+            <div class="menu-container-scroll">
+                <div class="menu-top">
+                    <div></div>
+                </div>
+                <div class="menu-bottom">
+                    <div class="conversation-section">
+                        <ul class="conversation-list">
+                            <li class="menu-button"><a
+                                    href="./NeighborhoodExample.html">Neighborhood
+                                    Party</a></li>
+                        </ul>
+                    </div>
+                    <div class="conversation-section">
+                        <h3>Yesterday</h3>
+                        <ul class="conversation-list">
+                            <li class="menu-button"><a href="./SchoolExample.html">School
+                                    Supplies for
+                                    3rd grade</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="conversation-section">
+                        <h3>Last Week</h3>
+                        <ul class="conversation-list">
+                            <li class="menu-button"><a href="./GiftExample.html">Birthday
+                                    Gifts
+                                    for
+                                    Nephew</a></li>
+                            <li class="menu-button"><a
+                                    href="./Waterbottle.html">Waterbottle
+                                    Shopping</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="chat-container">
             <header class="chat-header">
+                <div class="closedMenuContainer">
+                    <button type="button" id="toggleMenuOpen"><i class="material-symbols-outlined"><span class="closedMenuContainer-button">menu</span></i></button>
+                    <a href="#" id="menuClosedNewChat"><i class="material-symbols-outlined"><span class="closedMenuContainer-button">stylus</span></i></a>
+                </div>
+
                 <a class="header-button" id="chat-header-henri" href="../../../index.html">Henri</a>
                 <div>
-                    <a class="header-button" id="chat-header-profile" href="../UserProfile.html"><i class="material-symbols-outlined">account_circle</i></a> 
+                    <a class="header-button" id="chat-header-profile" href="../UserLogin.html"><i
+                            class="material-symbols-outlined"><span class="closedMenuContainer-button">account_circle</span></i></a>
                     <a class="header-button" id="chat-header-login" href="../UserLogin.html">Log in</a>
                     <a class="header-button" id="chat-header-signup" href="../UserSignup.html">Sign
                         Up</a>
@@ -43,14 +72,14 @@
             </header>
             <div class="chat-history">
                 <div class="message bot-message">
-                    <div id="logo"></div>
+                    <div class="logo"></div>
                     <p><strong>Henri:</strong> How can I assist you today?</p>
                 </div>
                 <div class="message user-message">
                     I need to find a new water bottle. I've had several different brands with various features, straws, etc. What really pisses me off is how they all leak in my bag. Do you know of a good brand that will reliably hold water?
                 </div>
                 <div class="message bot-message">
-                    <div id="logo"></div>
+                    <div class="logo"></div>
                     <div>
                         <p><strong>Henri:</strong> I totally understand your frustration—there’s nothing worse than a water bottle that leaks in your bag! Don’t worry, I’ve got a few reliable, leak-proof options that can help put an end to that problem. Here are some great water bottles known for their durability and leak-proof designs:</p>
                         <ul>
@@ -66,7 +95,7 @@
                     I know about Hydro Flasks because people are always dropping and denting them. My uncle always uses Nalgene bottles when we go kayaking.
                 </div>
                 <div class="message bot-message">
-                    <div id="logo"></div>
+                    <div class="logo"></div>
                     <div>
                         <p><strong>Henri:</strong> Ah, got it! Hydro Flasks are super popular, but I totally understand the concern about denting. As for the <button class="learn-more-button">Nalgene Tritan Wide Mouth Bottles</button>, they’re definitely a go-to for outdoor activities like kayaking—super durable, lightweight, and resistant to pretty much anything, which is why your uncle probably loves them.</p>
                         <p>If you’re looking for something just as reliable, but perhaps want to try something different, the <button class="learn-more-button">Contigo Autoseal</button> or <button class="learn-more-button">CamelBak Chute Mag</button> could be great alternatives. Both are known for their leak-proof designs and durability, without the risk of denting like the Hydro Flask.</p>
@@ -77,7 +106,7 @@
                     I guess let's try the Nalgene bottle.
                 </div>
                 <div class="message bot-message">
-                    <div id="logo"></div>
+                    <div class="logo"></div>
                     <div>
                         <p><strong>Henri:</strong> Excellent choice! The <strong>Nalgene Tritan Wide Mouth Bottle</strong> is a solid, reliable option that should put an end to those leaks in your bag.</p>
                         <p>The bottle is priced at <strong>$14.99</strong>. Would you like me to go ahead and add it to your cart and proceed with the checkout using the same payment method as before?</p>
@@ -87,7 +116,7 @@
                     What color is it?
                 </div>
                 <div class="message bot-message">
-                    <div id="logo"></div>
+                    <div class="logo"></div>
                     <div>
                         <p><strong>Henri:</strong> The <strong>Nalgene Tritan Wide Mouth Bottle</strong> comes in a variety of colors, including:</p>
                         <ul>
@@ -105,7 +134,7 @@
                     Is there orange?
                 </div>
                 <div class="message bot-message">
-                    <div id="logo"></div>
+                    <div class="logo"></div>
                     <div>
                         <p><strong>Henri:</strong> Yes! The <strong>Nalgene Tritan Wide Mouth Bottle</strong> does come in <strong>Orange</strong>. Would you like me to add the orange one to your cart and proceed with checkout?</p>
                     </div>
@@ -114,7 +143,7 @@
                     Yes. Add and checkout. Use my normal card.
                 </div>
                 <div class="message bot-message">
-                    <div id="logo"></div>
+                    <div class="logo"></div>
                     <div>
                         <p><strong>Henri:</strong> Great choice! I’ve added the <strong>Orange Nalgene Tritan Wide Mouth Bottle</strong> to your cart for <strong>$14.99</strong>.</p>
                         <p>Proceeding with checkout using your normal payment method… Done! Your order has been successfully placed, and you’ll receive a confirmation email shortly with all the details.</p>
@@ -125,7 +154,7 @@
             
             <div class="chat-input">
                 <textarea id="user-input" name="user-query" placeholder="I'm looking for..." required></textarea>
-                <button id="send-button" type="button"><i class="material-symbols-outlined">search</i></button>
+                <button type="submit"><i id="search-button" class="material-symbols-outlined">search</i></button>
             </div>
             <footer class="chat-footer">
                 <h3>--- <a href="https://github.com/evanscott1/startup" target="_blank">GitHub</a> ---</h1>

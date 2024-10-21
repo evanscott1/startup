@@ -7,35 +7,64 @@
     <title>Henri</title>
     <link rel="stylesheet" href="../../../CSS/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script type="module" src="../../../JS/chat-menu.js"></script>
+    <script type="module" src="../../../JS/search-bar.js"></script>
 </head>
 
 <body>
-    <main>
+    <main id="chat-page">
         <div class="menu-container">
             <header class="menu-nav">
-                <a href="#"><i class="material-symbols-outlined">menu</i></a>
-                <a href="../../../index.html"><i class="material-symbols-outlined">stylus</i></a>
+                <button type="button" id="toggleMenuClose"><i class="material-symbols-outlined"><span class="menu-nav-button">menu</span></i></button>
+                <a href="../../../index.html" id="menuOpenNewChat"><i class="material-symbols-outlined"><span class="menu-nav-button">stylus</span></i></a>
             </header>
-            <div class="menu-top">
-                <div></div>
-            </div>
-            <div class="menu-bottom">
-                <h2>History</h2>
-                <ul class="conversation-list">
-                    <li class="menu-button conversation-list-item"><a href="./NeighborhoodExample.html">Neighborhood Party</a></li>
-                    <h3>Yesterday</h3>
-                    <li class="menu-button conversation-list-item"><a href="./SchoolExample.html">School Supplies for 3rd grade</a></li>
-                    <h3>Last Week</h3>
-                    <li class="menu-button conversation-list-item"><a href="./GiftExample.html">Birthday Gifts for Nephew</a></li>
-                    <li class="menu-button conversation-list-item"><a href="./Waterbottle.html">Waterbottle Shopping</a></li>
-                </ul>
+            <div class="menu-container-scroll">
+                <div class="menu-top">
+                    <div></div>
+                </div>
+                <div class="menu-bottom">
+                    <div class="conversation-section">
+                        <ul class="conversation-list">
+                            <li class="menu-button"><a
+                                    href="./NeighborhoodExample.html">Neighborhood
+                                    Party</a></li>
+                        </ul>
+                    </div>
+                    <div class="conversation-section">
+                        <h3>Yesterday</h3>
+                        <ul class="conversation-list">
+                            <li class="menu-button"><a href="./SchoolExample.html">School
+                                    Supplies for
+                                    3rd grade</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="conversation-section">
+                        <h3>Last Week</h3>
+                        <ul class="conversation-list">
+                            <li class="menu-button"><a href="./GiftExample.html">Birthday
+                                    Gifts
+                                    for
+                                    Nephew</a></li>
+                            <li class="menu-button"><a
+                                    href="./Waterbottle.html">Waterbottle
+                                    Shopping</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="chat-container">
             <header class="chat-header">
+                <div class="closedMenuContainer">
+                    <button type="button" id="toggleMenuOpen"><i class="material-symbols-outlined"><span class="closedMenuContainer-button">menu</span></i></button>
+                    <a href="#" id="menuClosedNewChat"><i class="material-symbols-outlined"><span class="closedMenuContainer-button">stylus</span></i></a>
+                </div>
+
                 <a class="header-button" id="chat-header-henri" href="../../../index.html">Henri</a>
                 <div>
-                    <a class="header-button" id="chat-header-profile" href="../UserProfile.html"><i class="material-symbols-outlined">account_circle</i></a> 
+                    <a class="header-button" id="chat-header-profile" href="../UserLogin.html"><i
+                            class="material-symbols-outlined"><span class="closedMenuContainer-button">account_circle</span></i></a>
                     <a class="header-button" id="chat-header-login" href="../UserLogin.html">Log in</a>
                     <a class="header-button" id="chat-header-signup" href="../UserSignup.html">Sign
                         Up</a>
@@ -43,7 +72,7 @@
             </header>
             <div class="chat-history">
                 <div class="message bot-message">
-                    <div id="logo"></div>
+                    <div class="logo"></div>
                     <p><strong>Henri:</strong> How can I assist you today?</p>
                 </div>
                 <div class="message user-message">
@@ -94,7 +123,7 @@
                     <p>Best regards,<br>Mrs. Smith<br>3rd Grade Teacher<br>Lincoln Elementary School</p>
                 </div>
                 <div class="message bot-message">
-                    <div id="logo"></div>
+                    <div class="logo"></div>
                     <div>
                         <p><strong>Henri:</strong> I'd be happy to help with Emma's school supplies. I see you've
                             provided an email from Mrs. Smith with the required items. Let me go through the list, find
@@ -141,7 +170,7 @@
                     Let's checkout then, with the Ziploc bags. Use Cindy's Mastercard for payment.
                 </div>
                 <div class="message bot-message">
-                    <div id="logo"></div>
+                    <div class="logo"></div>
                     <div>
                         <p><strong>Henri:</strong> Great! I’ll proceed to checkout with the items in your cart,
                             including the Ziploc bags.</p>
@@ -155,7 +184,7 @@
 
             <div class="chat-input">
                 <textarea id="user-input" name="user-query" placeholder="I'm looking for..." required></textarea>
-                <button id="send-button" type="button"><i class="material-symbols-outlined">search</i></button>
+                <button type="submit"><i id="search-button" class="material-symbols-outlined">search</i></button>
             </div>
             <footer class="chat-footer">
                 <h3>--- <a href="https://github.com/evanscott1/startup" target="_blank">GitHub</a> ---</h1>
