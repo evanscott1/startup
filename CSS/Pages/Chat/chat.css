@@ -5,18 +5,16 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    background-color: #D6EFD8;
 }
 
-.openMenuContainer {
-    display: flex;
-
-}
 
 .chat-history {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: hidden;
     padding: 1rem;
-    background-color: #D6EFD8;
+    max-width: 60rem; /* Limit the width on larger screens */
+    margin: 0 auto; /* Center the chat interface */
 }
 
 .message {
@@ -46,42 +44,42 @@
 
 .chat-input {
     display: flex;
+    align-items: end;
     padding: 10px;
     padding-bottom: 0;
     background-color: #D6EFD8;
-    line-height: 1.5;
-    border-bottom: 2px solid #D6EFD8;
+    border-bottom: 2px solid #D6EFD8; 
+    overflow: hidden;
 }
 
-#send-button {
+.chat-input button {
     background-color: #1A5319;
     color: #fff;
     border: none;
     border-radius: 60px;
 }
 
+#search-button {
+    display: flex;
+    cursor: pointer;
+    padding: 0.3rem;
+}
+
 #send-button:hover {
     background-color: #80AF81;
     color: #fff;
-    border: 1px solid black;
 }
-/* TODO: add dynamic sizing for the height of the textarea of the user input */
+
 #user-input {
     flex-grow: 1;
-    padding: 10px  10px 10px 25px;
+    padding: 0rem  1.5rem 0rem 1.5rem;
     border: none;
     border-radius: 30px;
-    height: max-content;    
+    overflow-y: hidden;
+    min-height: 2.5rem;
+    line-height: q.5rem;
+    max-height: 10rem;
     resize: none;
-    overflow-y: auto;
-}
-
-#user-input::-webkit-scrollbar {
-    display: none;
-}
-
-#user-input {
-    scrollbar-width: 0;
 }
 
 #logo {
@@ -105,3 +103,4 @@
 .learn-more-button:hover {
     background-color: #80AF81;
 }
+

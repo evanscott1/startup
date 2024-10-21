@@ -14,10 +14,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: #1A5319;
     color: #D6EFD8;
     padding: 0;
-    font-size: 1.5em;
     height: 3.5rem;
 }
 
@@ -27,16 +25,34 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    padding: 5%;
+    padding: 0.3rem;
 }
 
-.menu-nav a:hover {
+.menu-nav button {
+    background-color: #1A5319;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.3rem;
+    margin-left: 1rem;
+}
+
+.menu-nav-button {
+    font-size: 2.5rem;
+}
+
+.menu-nav a:hover, .menu-nav button:hover {
     background-color: #508D4E;
 }
 
 .menu-container-scroll {
     flex-grow: 1;
     overflow-y: auto;
+}
+
+.menu-container-scroll::-webkit-scrollbar {
+    display: none;
 }
 
 .menu-top {
@@ -64,8 +80,9 @@
 
 
 .menu-bottom h1, h2, h3, h4, h5, h6 {
-    padding-left: 5%;
+    padding-left: 1rem;
 }
+
 
 .conversation-list {
     list-style: none;
@@ -75,7 +92,23 @@
 
 .conversation-list a {
     display: block;
-    padding: 5%;
+    padding: 1rem;
+}
+
+#toggleMenuOpen {
+    display: flex;
+}
+
+#toggleMenuClose {
+    display: flex;
+}
+
+#menuClosedNewChat {
+    display: flex;
+}
+
+#menuOpenNewChat {
+    display: flex;
 }
 
 @media (max-width: 768px) {
@@ -88,20 +121,11 @@
     .menu-container {
         display: none;
     }
-
-    #toggleMenuOpen {
-        display: block;
-    }
-
-    #toggleMenuClose {
-        display: none;
-    }
-
 }
 
 @media (min-width: 1024px) {
     .menu-container {
-        display: block;
+        display: flex;
     }
 
     #toggleMenuOpen {
@@ -109,7 +133,7 @@
     }
 
     #toggleMenuClose {
-        display: block;
+        display: flex;
     }
 
     #menuClosedNewChat {
