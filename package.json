@@ -1,0 +1,11 @@
+{
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "Henri helps retail customers find the exact product they need using an online digital shopping assistant. Leveraging AI, Henri not only organizes products into a digital directory but also makes intelligent, context-aware recommendations. The traditional search bar is outdated—Henri ushers in the era of the digital shopping assistant.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
