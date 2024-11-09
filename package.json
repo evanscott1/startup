@@ -4,8 +4,20 @@
   "description": "Henri helps retail customers find the exact product they need using an online digital shopping assistant. Leveraging AI, Henri not only organizes products into a digital directory but also makes intelligent, context-aware recommendations. The traditional search bar is outdated—Henri ushers in the era of the digital shopping assistant.",
   "main": "index.js",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.4.10"
+  },
+  "keywords": [],
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  }
 }
