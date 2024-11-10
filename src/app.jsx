@@ -3,10 +3,15 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Signup } from './signup/signup';
 import { Profile } from './profile/profile';
-import { Chat } from './chat/chat';
+import { AuthState } from './login/authState';
 
 
 export default function App() {
+    const [email, setEmail] = React.useState(localStorage.getItem('email') || '');
+    const currentAuthState = email ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
+
+
     return (
         <BrowserRouter>
             <div >
@@ -41,10 +46,22 @@ export default function App() {
                 </header> */}
 
                 <Routes>
-                    <Route path='/' element={<Login />} exact />
+                <Route
+            path='/'
+            element={
+              <Login
+                email={email}
+                authState={authState}
+                onAuthChange={(email, authState) => {
+                  setAuthState(authState);
+                  setEmail(email);
+                }}
+              />
+            }
+            exact
+          />
                     <Route path='/signup' element={<Signup />} />
                     <Route path='/profile' element={<Profile />} />
-                    <Route path='/chat' element={<Chat />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 
