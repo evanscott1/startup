@@ -1,0 +1,17 @@
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    color: #1A5319;
+    font-size: 0.8em;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #1A5319;
+    border-radius: 8px;
+}

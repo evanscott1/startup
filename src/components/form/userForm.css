@@ -1,0 +1,60 @@
+.userform-page {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.userform-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1A5319;
+    color: #D6EFD8;
+    padding: 0;
+    font-size: 1.5em;
+    height: 10vh;
+}
+
+
+
+#userform-header-henri {
+    margin: 0;
+    position: relative;
+    left: 20px;
+}
+
+
+
+
+
+    
+
+
+.userform-form div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+.userform-form a:hover {
+    color: #508D4E;
+}
+
+.userform-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.userform-form textarea {
+    resize: none;
+}
+
+.userform-form input[readonly] {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    color: #888;
+}

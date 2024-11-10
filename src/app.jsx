@@ -9,15 +9,15 @@ import { Chat } from './chat/chat';
 export default function App() {
     return (
         <BrowserRouter>
-            <div className='body bg-dark text-light'>
-                <header className='container-fluid'>
+            <div >
+                {/* <header>
                     <nav className='navbar fixed-top navbar-dark'>
                         <div className='navbar-brand'>
                             Henri<sup>&reg;</sup>
                         </div>
                         <menu className='navbar-nav'>
                             <li className='nav-item'>
-                                <NavLink className='nav-link' to='login'>
+                                <NavLink className='nav-link' to=''>
                                     Login
                                 </NavLink>
                             </li>
@@ -38,9 +38,7 @@ export default function App() {
                             </li>
                         </menu>
                     </nav>
-                </header>
-
-                <main>App components go here</main>
+                </header> */}
 
                 <Routes>
                     <Route path='/' element={<Login />} exact />
@@ -50,10 +48,10 @@ export default function App() {
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 
-                <footer className='bg-dark text-white-50'>
-                    <div className='container-fluid'>
-                        <span className='text-reset'>Author Name(s)</span>
-                        <a className='text-reset' href='https://github.com/evanscott1/startup'>
+                <footer>
+                    <div>
+                        <span>Author Name(s)</span>
+                        <a href='https://github.com/evanscott1/startup'>
                             Source
                         </a>
                     </div>
