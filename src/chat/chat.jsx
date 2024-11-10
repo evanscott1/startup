@@ -1,16 +1,17 @@
 import React from 'react';
+import Menu from '../components/menu/menu';
+import ChatContainer from '../components/chat/chatContainer';
 
-
-export function Chat(props) {
-
-
-
+export function Chat() {
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>chat displayed here</div>
-      <button onClick={props.logout}>
-        Logout
-      </button>
+    <main id="chat-page">
+      <Menu />
+      <ChatContainer />
     </main>
   );
 }
+
+
+      // <button onClick={props.logout}>
+      //   Logout
+      // </button>
