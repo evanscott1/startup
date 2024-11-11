@@ -1,0 +1,9 @@
+.chat-container {
+    flex-grow: 1;
+    height: 100vh;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #D6EFD8;
+}

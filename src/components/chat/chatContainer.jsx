@@ -4,6 +4,8 @@ import ChatHistory from './chatHistory';
 import ChatInput from './chatInput';
 import Footer from '../footer';
 
+import './chatContainer.css'
+
 function ChatContainer() {
   return (
     <div className="chat-container">
