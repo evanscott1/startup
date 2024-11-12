@@ -1,0 +1,46 @@
+.chat-input {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-self: end;
+    padding: 0rem 1rem 0rem 1rem;
+    background-color: #D6EFD8;
+    border-bottom: 2px solid #D6EFD8; 
+}
+
+.chat-input button {
+    background-color: #1A5319;
+    color: #fff;
+    border: none;
+    border-radius: 35px;
+}
+
+#search-button {
+    display: flex;
+    cursor: pointer;
+    padding: 0.3rem;
+    font-size: 2.0rem;
+}
+
+#send-button:hover {
+    background-color: #80AF81;
+    color: #fff;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 0rem  1.5rem 0rem 1.5rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 30px;
+    overflow-y: hidden;
+    min-height: 2.5rem;
+    line-height: 2.0rem;
+    max-height: 10rem;
+    resize: none;
+}
+
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+}

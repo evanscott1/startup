@@ -1,0 +1,13 @@
+.chat-footer {
+    background-color: #D6EFD8;
+    margin: 0;
+    padding: 0;
+    height: 1.5rem;
+}
+
+.chat-footer h3 {
+    padding: 5px;
+    margin: 0;
+    font-size: 75%;
+    text-align: center;
+}

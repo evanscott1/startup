@@ -1,6 +1,8 @@
 import React from 'react';
 import ChatMessage from './chatMessage';
 
+import './chatHistory.css'
+
 function ChatHistory() {
   const messages = [
     { sender: 'Henri', message: 'How can I assist you today?', isBot: true },

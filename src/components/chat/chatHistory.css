@@ -1,0 +1,5 @@
+.chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem 1rem 0rem 1rem;
+}

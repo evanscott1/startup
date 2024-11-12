@@ -1,0 +1,16 @@
+.menu-button {
+    background-color: #1A5319;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background-color: #508D4E;
+}
+
+
+.menu-bottom h1, h2, h3, h4, h5, h6 {
+    padding-left: 1rem;
+}

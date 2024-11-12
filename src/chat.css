@@ -1,0 +1,30 @@
+
+
+
+
+
+
+
+
+.logo {
+    width: 2rem;
+    height: 2rem;
+    background-color: #1A5319;
+    display: inline-block;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.learn-more-button {
+    background-color: #508D4E;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.learn-more-button:hover {
+    background-color: #80AF81;
+}

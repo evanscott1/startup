@@ -65,14 +65,7 @@ export default function App() {
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 
-                <footer>
-                    <div>
-                        <span>Author Name(s)</span>
-                        <a href='https://github.com/evanscott1/startup'>
-                            Source
-                        </a>
-                    </div>
-                </footer>
+
             </div>
         </BrowserRouter>
 

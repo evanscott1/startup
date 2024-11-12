@@ -2,7 +2,7 @@ import React from 'react';
 import ChatHeader from './chatHeader';
 import ChatHistory from './chatHistory';
 import ChatInput from './chatInput';
-import Footer from '../footer';
+import ChatFooter from './chatFooter';
 
 import './chatContainer.css'
 
@@ -12,7 +12,7 @@ function ChatContainer() {
       <ChatHeader />
       <ChatHistory />
       <ChatInput />
-      <Footer />
+      <ChatFooter />
     </div>
   );
 }

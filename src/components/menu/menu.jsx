@@ -2,6 +2,9 @@ import React from 'react';
 import MenuHeader from './menuHeader';
 import ConversationList from './conversationList';
 
+import './menu.css'
+import ChatFooter from '../chat/chatFooter';
+
 function Menu() {
   return (
     <div className="menu-container">

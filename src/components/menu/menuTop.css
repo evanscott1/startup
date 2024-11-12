@@ -1,0 +1,10 @@
+.menu-top {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+/* placeholder */
+.menu-top div {
+    height: 10rem;
+}

@@ -1,0 +1,67 @@
+.menu-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #D6EFD8;
+    padding: 0;
+    height: 3.5rem;
+}
+
+.menu-nav a {
+    background-color: #1A5319;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.3rem;
+}
+
+.menu-nav button {
+    background-color: #1A5319;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.3rem;
+    margin-left: 1rem;
+}
+
+.menu-nav-button {
+    font-size: 2.5rem;
+}
+
+.menu-nav a:hover, .menu-nav button:hover {
+    background-color: #508D4E;
+}
+
+#toggleMenuOpen {
+    display: flex;
+}
+
+#toggleMenuClose {
+    display: flex;
+}
+
+#menuClosedNewChat {
+    display: flex;
+}
+
+#menuOpenNewChat {
+    display: flex;
+}
+
+
+@media (min-width: 1024px) {
+    #toggleMenuOpen {
+        display: none;
+    }
+
+    #toggleMenuClose {
+        display: flex;
+    }
+
+    #menuClosedNewChat {
+        display: none;
+    }
+}
