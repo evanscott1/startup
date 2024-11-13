@@ -20,12 +20,23 @@ function ChatContainer(props) {
 
   const addMessage = (newMessage) => {
     setMessages((prevMessages) => [...prevMessages, newMessage]);
+    const botMessage = {
+      sender: 'Henri', message: 'I\'m happy to help!', isBot: true
+    };
+    setMessages((prevMessages) => [...prevMessages, botMessage]);
   };
+
+  const resetChat = () => {
+    const defaultMessage = {
+      sender: 'Henri', message: 'How can I assist you today?', isBot: true
+    };
+    setMessages((prevMessages) => [...prevMessages, defaultMessage]);
+  }
 
 
   return (
     <div className="chat-container">
-      <ChatHeader logout={props.logout}/>
+      <ChatHeader logout={props.logout} onNewChat={resetChat}/>
       <ChatHistory messages={messages}/>
       <ChatInput onSend={addMessage} />
       <ChatFooter />

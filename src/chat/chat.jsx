@@ -7,7 +7,7 @@ import './chat.css'
 export function Chat(props) {
   return (
     <main id="chat-page">
-      <Menu />
+      {/* <Menu /> */}
       <ChatContainer logout={props.logout}/>
     </main>
   );

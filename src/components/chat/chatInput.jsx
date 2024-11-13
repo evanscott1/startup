@@ -9,7 +9,6 @@ function ChatInput({onSend}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(input);
     const newMessage = {
       sender: 'User', message: input, isBot: false
     }
