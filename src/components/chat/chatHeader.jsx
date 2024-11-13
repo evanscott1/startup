@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './chatHeader.css'
 
-function ChatHeader() {
+function ChatHeader(props) {
     return (
         <header className="chat-header">
             <div className="closedMenuContainer">
@@ -14,9 +15,13 @@ function ChatHeader() {
             <div id="header-icons">
                 <a className="header-button" id="chat-header-profile" href="../UserLogin.html"><i
                     className="material-symbols-outlined"><span className="closedMenuContainer-button">account_circle</span></i></a>
-                <a className="header-button" id="chat-header-login" href="../UserLogin.html">Log in</a>
-                <a className="header-button" id="chat-header-signup" href="../UserSignup.html">Sign
-                    Up</a>
+                {/* <a className="header-button" id="chat-header-login" href="../UserLogin.html">Log out</a> */}
+                <button onClick={props.logout}>
+                    Logout
+                </button>
+
+                {/* <a className="header-button" id="chat-header-signup" href="../UserSignup.html">Sign
+                    Up</a> */}
             </div>
         </header>
     );

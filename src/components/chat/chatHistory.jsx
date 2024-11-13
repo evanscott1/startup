@@ -3,12 +3,10 @@ import ChatMessage from './chatMessage';
 
 import './chatHistory.css'
 
-function ChatHistory() {
-  const messages = [
-    { sender: 'Henri', message: 'How can I assist you today?', isBot: true },
-    { sender: 'User', message: 'I need to get a birthday gift for my nephew.', isBot: false },
-    // More messages...
-  ];
+
+function ChatHistory({messages}) {
+
+
 
   return (
     <div className="chat-history">

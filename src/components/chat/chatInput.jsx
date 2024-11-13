@@ -4,13 +4,17 @@ import React, { useState } from 'react';
 
 import './chatInput.css'
 
-function ChatInput() {
+function ChatInput({onSend}) {
   const [input, setInput] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(input);
-    setInput(''); // Clear input after submit
+    const newMessage = {
+      sender: 'User', message: input, isBot: false
+    }
+    onSend(newMessage);
+    setInput('');
   };
 
   return (

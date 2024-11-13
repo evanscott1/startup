@@ -4,11 +4,11 @@ import ChatContainer from '../components/chat/chatContainer';
 
 import './chat.css'
 
-export function Chat() {
+export function Chat(props) {
   return (
     <main id="chat-page">
       <Menu />
-      <ChatContainer />
+      <ChatContainer logout={props.logout}/>
     </main>
   );
 }
