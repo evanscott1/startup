@@ -22,7 +22,7 @@ export function Profile({onLogout}) {
 
 
   return (
-        <div>
+<span>
         <h3 className='title'>Profile</h3>
         <FormLayout onSubmit={handleSubmit}>
           <Input
@@ -39,7 +39,11 @@ export function Profile({onLogout}) {
 
           <button className='logout' type='button' onClick={onLogout}>Logout</button>
         </FormLayout>
-        </div>
+        <h4 className='title'>Notifications:</h4>
+        <h5 className='title'>Your order was shipped!</h5>
+</span>
+
+
 
 
 

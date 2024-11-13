@@ -80,14 +80,14 @@ The design was slightly modified to accomodate the requirements of the HTML deli
     TODO: Optimize for mobile.
 ### Details
 
-- [ ] **Bundled and transpiled**:
-- [ ] **Components**:
-    - [ ] **login**:
-    - [ ] **database**:
-    - [ ] **WebSocket**:
-    - [ ] **application logic**:
-- [ ] **Router**:
-- [ ] **Hooks**:
+- [x] **Bundled and transpiled**: Added packages for React using the Vite setup.
+- [x] **Components**: Organized page features into reusable components. Removed chat history to reduce scope of project. Was going to require a lot more storage.
+    - [x] **login**: Setup pseudo authorization using local storage.
+    - [x] **database**: Setup pseudo database using local storage.
+    - [x] **WebSocket**: Notifications placeholder. Will be used to notify customers of order status.
+    - [x] **application logic**: Will process chat messages to format appropriately. Need to learn more about the format of OpenAI API responses before implementing.
+- [x] **Router**: Router setup for login(auth).
+- [x] **Hooks**: Hooks used as appropriate for dynamic content.
 
 ## Service deliverable
 
