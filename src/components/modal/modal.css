@@ -15,19 +15,45 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    width: 50%;
-    max-width: 600px;
+    width: fit-content;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     position: relative;
+    justify-content: center;
+    align-items: center;
   }
   
   .modal-close {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: none;
+    background: #508D4E;
+    color: #fff;
     border: none;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     cursor: pointer;
   }
+
+
+.modal-close:hover {
+    background-color: #1A5319;
+}
+
+  /* @media (max-width: 768px) {
+    .modal-content {
+        width: 10rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .modal-content {
+        width: 25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .modal-content {
+        width: 25rem;
+    }
+} */
+
   

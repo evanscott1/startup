@@ -30,7 +30,7 @@ function ChatContainer(props) {
     const defaultMessage = {
       sender: 'Henri', message: 'How can I assist you today?', isBot: true
     };
-    setMessages((prevMessages) => [...prevMessages, defaultMessage]);
+    setMessages(() => [defaultMessage]);
   }
 
 

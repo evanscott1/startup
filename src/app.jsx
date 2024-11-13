@@ -60,8 +60,6 @@ export default function App() {
             }
             exact
           />
-                    <Route path='/signup' element={<Signup />} />
-                    <Route path='/profile' element={<Profile />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 

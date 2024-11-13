@@ -6,6 +6,7 @@ import FormLink from '../components/form/formLink';
 import FormLayout from '../components/form/formLayout';
 
 import '../components/form/formAuthLinks.css'
+import ChatFooter from '../components/chat/chatFooter';
 
 export function Unauthenticated(props) {
     const [email, setEmail] = useState(props.email || '');
@@ -33,6 +34,7 @@ export function Unauthenticated(props) {
     };
   
     return (
+      <span>
       <FormContainer>
         <FormLayout onSubmit={handleSubmit}>
           <Input
@@ -60,7 +62,11 @@ export function Unauthenticated(props) {
             <FormLink to="/signup">Sign Up</FormLink>
           </div>
         </FormLayout>
+      <ChatFooter />          
       </FormContainer>
+      
+      </span>
+
     );
   }
   

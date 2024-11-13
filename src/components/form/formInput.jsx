@@ -2,7 +2,7 @@ import React from 'react';
 
 import './formInput.css'
 
-function Input({ type, id, name, placeholder, value, onChange, required, minLength }) {
+function Input({ type, id, name, placeholder, value, onChange, required, minLength, readOnly }) {
     return (
       <div>
         <label htmlFor={id}>{placeholder}:</label>
@@ -15,6 +15,7 @@ function Input({ type, id, name, placeholder, value, onChange, required, minLeng
           onChange={onChange}
           required={required}
           minLength={minLength}
+          readOnly={readOnly}
         />
       </div>
     );

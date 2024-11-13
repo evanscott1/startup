@@ -1,7 +1,7 @@
 .userform-form {
     display: flex;
     flex-direction: column;
-    width: 10em;
+    width: 10rem;
     padding: 20px;
     margin: 20px;
     background-color: #fff;
@@ -11,18 +11,18 @@
 
 @media (max-width: 768px) {
     .userform-form {
-        width: 10em;
+        width: 10rem;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .userform-form {
-        width: 15em;
+        width: 15rem;
     }
 }
 
 @media (min-width: 1024px) {
     .userform-form {
-        width: 15em;
+        width: 15rem;
     }
 }

@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import Modal from '../modal/modal';
+import { Profile } from '../../profile/profile';
 
 import './chatHeader.css'
 
+
 function ChatHeader(props) {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleOnClickProfile = () => {
+        setIsOpen(isOpen ? false : true);
+    }
+
+  
     return (
         <header className="chat-header">
             {/* Menu Disabled */}
@@ -24,9 +35,12 @@ function ChatHeader(props) {
                 {/* <a className="header-button" id="chat-header-profile" href="../UserLogin.html"><i
                     className="material-symbols-outlined"><span className="closedMenuContainer-button">account_circle</span></i></a> */}
                 {/* <a className="header-button" id="chat-header-login" href="../UserLogin.html">Log out</a> */}
-                <button type='button' onClick={props.logout}>
+                <button type='button' onClick={handleOnClickProfile}>
                 <i className="material-symbols-outlined">account_circle</i>
                 </button>
+
+                <Modal isOpen={isOpen} onClose={handleOnClickProfile}><Profile onLogout={props.logout}/></Modal>
+                
 
                 {/* <a className="header-button" id="chat-header-signup" href="../UserSignup.html">Sign
                     Up</a> */}
