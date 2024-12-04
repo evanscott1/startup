@@ -55,7 +55,7 @@ apiRouter.post("/auth/login", async (req, res) => {
 
 // DeleteAuth: Logout a user
 apiRouter.delete("/auth/logout", (req, res) => {
-  const user = users.find((u) => u.token === req.body.token);
+  const user = users.find((u) => u.token === req.headers.authorization);
   if (user) {
     delete user.token;
   }
@@ -64,7 +64,7 @@ apiRouter.delete("/auth/logout", (req, res) => {
 
 // GetOrders: Get orders for the authenticated user
 apiRouter.get("/orders", (req, res) => {
-  const token = req.headers.authorization || req.body.token; // Use Authorization header or body token
+  const token = req.headers.authorization;
   const user = users.find((u) => u.token === token);
 
   if (!user) {
@@ -77,7 +77,7 @@ apiRouter.get("/orders", (req, res) => {
 
 // CreateOrder: Add a new order for the authenticated user
 apiRouter.post("/orders", (req, res) => {
-    const token = req.headers.authorization || req.body.token; // Use Authorization header or body token
+    const token = req.headers.authorization;
     const user = users.find((u) => u.token === token);
   
     // Check if the user is authenticated
