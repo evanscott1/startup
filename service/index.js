@@ -57,12 +57,30 @@ apiRouter.post("/auth/login", async (req, res) => {
 
 // DeleteAuth: Logout a user
 apiRouter.delete("/auth/logout", (req, res) => {
-  const user = users.find((u) => u.token === req.headers.authorization);
-  if (user) {
+    const authHeader = req.headers.authorization;
+  
+    if (!authHeader) {
+      return res.status(401).json({ msg: "Authorization header missing" });
+    }
+  
+    // Extract the token ("Bearer <token>")
+    const token = authHeader.split(" ")[1];
+  
+    if (!token) {
+      return res.status(401).json({ msg: "Invalid authorization header format" });
+    }
+  
+    const user = users.find((u) => u.token === token);
+  
+    if (!user) {
+      return res.status(401).json({ msg: "Invalid or expired token" });
+    }
+  
     delete user.token;
-  }
-  res.status(204).end();
-});
+
+    return res.status(204).end();
+  });
+  
 
 // GetOrders: Get orders for the authenticated user
 apiRouter.get("/orders", (req, res) => {
