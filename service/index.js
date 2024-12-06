@@ -16,22 +16,23 @@ app.use(`/api`, apiRouter);
 
 // In-memory data storage
 let users = [
-  { username: "e", password: "eeeeeeee", token: "abc123" }
+  { name: "e", email: "e@e.com", password: "eeeeeeee", token: "abc123" }
 ];
 
 let orders = [
-  { username: "e", orderId: "20" },
-  { username: "e", orderId: "30" }
+  { email: "e@e.com", orderId: "20" },
+  { email: "e@e.com", orderId: "30" }
 ];
 
 // CreateAuth: Create a new user
 apiRouter.post("/auth/create", async (req, res) => {
-  const existingUser = users.find((user) => user.username === req.body.email);
+  const existingUser = users.find((user) => user.email === req.body.email);
   if (existingUser) {
     res.status(409).send({ msg: "Existing user" });
   } else {
     const newUser = {
-      username: req.body.email,
+      name: req.body.name,
+      email: req.body.email,
       password: req.body.password,
       token: uuid.v4()
     };
@@ -43,7 +44,7 @@ apiRouter.post("/auth/create", async (req, res) => {
 
 // GetAuth: Login an existing user
 apiRouter.post("/auth/login", async (req, res) => {
-  const user = users.find((user) => user.username === req.body.email);
+  const user = users.find((user) => user.email === req.body.email);
   if (user) {
     if (req.body.password === user.password) {
       user.token = uuid.v4();
@@ -93,7 +94,7 @@ apiRouter.post("/orders", (req, res) => {
   
     // Create the new order
     const newOrder = {
-      username: user.username,
+      username: user.email,
       orderId: req.body.orderId
     };
   
@@ -101,13 +102,13 @@ apiRouter.post("/orders", (req, res) => {
     orders.push(newOrder);
   
     // Return the updated list of orders for the user
-    const userOrders = getOrders(user.username);
+    const userOrders = getOrders(user.email);
     res.status(201).send(userOrders);
   });
   
 
 // Helper function to get orders
-function getOrders(username) {
-  return orders.filter((order) => order.username === username);
+function getOrders(email) {
+  return orders.filter((order) => order.email === email);
 }
 

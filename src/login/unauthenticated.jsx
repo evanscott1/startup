@@ -29,16 +29,18 @@ export function Unauthenticated(props) {
         return;
       }
   
-      localStorage.setItem('email', email);
-      props.onLogin(email);
+
 
       login();
 
+      localStorage.setItem('email', email);
+      props.onLogin(email);
+      
       console.log('Login submitted:', { email, password });
     };
 
     async function login() {
-      const endpoint = `http://localhost:4000/api/auth/login`;
+      const endpoint = `/api/auth/login`;
       const response = await fetch(endpoint, {
         method: 'post',
         body: JSON.stringify({ email: email, password: password }),
