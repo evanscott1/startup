@@ -23,8 +23,30 @@ export function Signup() {
     props.onLogin(userName);
 
     // Add your signup logic here (e.g., API call or storing user data)
+    create();
+
+
     console.log('Signup submitted:', { name, email, password });
   };
+
+  async function create() {
+    const endpoint = `http://localhost:4000/api/auth/create`;
+    const response = await fetch(endpoint, {
+      method: 'post',
+      body: JSON.stringify({name: name, email: email, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+  
+    if (response?.status === 200) {
+      localStorage.setItem('email', email);
+      props.onLogin(email);
+    } else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`);
+    }
+  }
 
   
 

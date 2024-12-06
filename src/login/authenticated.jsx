@@ -7,9 +7,18 @@ import { Chat } from '../chat/chat';
 export function Authenticated(props) {
   const navigate = useNavigate();
 
+
   function logout() {
-    localStorage.removeItem('email');
-    props.onLogout();
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        // Logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('email');
+        props.onLogout();
+      });
   }
 
   return (

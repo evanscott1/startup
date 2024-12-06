@@ -31,7 +31,31 @@ export function Unauthenticated(props) {
   
       localStorage.setItem('email', email);
       props.onLogin(email);
+
+      login();
+
+      console.log('Login submitted:', { email, password });
     };
+
+    async function login() {
+      const endpoint = `http://localhost:4000/api/auth/login`;
+      const response = await fetch(endpoint, {
+        method: 'post',
+        body: JSON.stringify({ email: email, password: password }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+    
+      if (response?.status === 200) {
+        localStorage.setItem('email', email);
+        props.onLogin(email);
+      } else {
+        const body = await response.json();
+        setDisplayError(`⚠ Error: ${body.msg}`);
+      }
+    }
+    
   
     return (
       <span>

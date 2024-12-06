@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
-import { Signup } from './signup/signup';
-import { Profile } from './profile/profile';
 import { AuthState } from './login/authState';
 
 
