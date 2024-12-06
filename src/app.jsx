@@ -6,42 +6,14 @@ import { AuthState } from './login/authState';
 
 export default function App() {
     const [email, setEmail] = React.useState(localStorage.getItem('email') || '');
-    const currentAuthState = email ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [token, setToken] = React.useState(localStorage.getItem('token'))
+    const currentAuthState = token ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
 
 
     return (
         <BrowserRouter>
             <div >
-                {/* <header>
-                    <nav className='navbar fixed-top navbar-dark'>
-                        <div className='navbar-brand'>
-                            Henri<sup>&reg;</sup>
-                        </div>
-                        <menu className='navbar-nav'>
-                            <li className='nav-item'>
-                                <NavLink className='nav-link' to=''>
-                                    Login
-                                </NavLink>
-                            </li>
-                            <li className='nav-item'>
-                                <NavLink className='nav-link' to='signup'>
-                                    Signup
-                                </NavLink>
-                            </li>
-                            <li className='nav-item'>
-                                <NavLink className='nav-link' to='profile'>
-                                    Profile
-                                </NavLink>
-                            </li>
-                            <li className='nav-item'>
-                                <NavLink className='nav-link' to='chat'>
-                                    Chat
-                                </NavLink>
-                            </li>
-                        </menu>
-                    </nav>
-                </header> */}
 
                 <Routes>
                 <Route
@@ -51,9 +23,9 @@ export default function App() {
                 email={email}
                 authState={authState}
                 onAuthChange={(email, authState) => {
-                  setAuthState(authState);
-                  setEmail(email);
-                }}
+                    setAuthState(authState ?? AuthState.Unauthenticated);
+                    setEmail(email);
+                  }}
               />
             }
             exact
