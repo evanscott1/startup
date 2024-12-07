@@ -1,15 +1,29 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Chat } from '../chat/chat';
 
 
 
 export function Authenticated(props) {
-  const navigate = useNavigate();
+
 
   function logout() {
-    localStorage.removeItem('email');
-    props.onLogout();
+    const token = localStorage.getItem('token');
+  
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
+      .catch(() => {
+        console.error('Logout request failed.');
+      })
+      .finally(() => {
+        localStorage.removeItem('email');
+        localStorage.removeItem('token');
+        props.onLogout();
+      });
   }
 
   return (

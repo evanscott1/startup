@@ -9,10 +9,7 @@ function ChatInput({onSend}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newMessage = {
-      sender: 'User', message: input, isBot: false
-    }
-    onSend(newMessage);
+    onSend(input);
     setInput('');
   };
 

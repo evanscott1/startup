@@ -14,3 +14,5 @@ Thumbs.db
 # Ignore deployment files
 *.sh
 
+/.vscode
+vite.config.js

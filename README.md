@@ -89,17 +89,18 @@ The design was slightly modified to accomodate the requirements of the HTML deli
 - [x] **Router**: Router setup for login(auth).
 - [x] **Hooks**: Hooks used as appropriate for dynamic content.
 
-## Service deliverable
+## Service Deliverable 
 
 ### Design
 
 ### Details
 
-- [ ] **Node.js/Express HTTP service**:
-- [ ] **Static middleware for frontend**:
-- [ ] **Calls to third party endpoints**:
-- [ ] **Backend service endpoints**:
-- [ ] **Frontend calls service endpoints**:
+- [x] **Node.js/Express HTTP service**: Set up a backend using Node.js and Express to handle HTTP requests and support the eCommerce platform's functionalities.
+- [x] **Static middleware for frontend**: Implemented middleware to serve static files for the frontend.
+- [x] **Calls to third party endpoints**: Integrated Dad Jokes API to act as inventory for the store.
+- [x] **Backend service endpoints**: Developed endpoints for making and managing tracking customer orders. As well as user account management.
+- [x] **Frontend calls service endpoints**: Ensured the frontend interacts with backend services to fetch product data, manage orders, and process customer queries.
+
 
 ## DB/Login deliverable
 
