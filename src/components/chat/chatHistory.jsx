@@ -6,7 +6,7 @@ import './chatHistory.css'
 
 function ChatHistory({messages}) {
 
-
+  console.log("Messages:", messages);
 
   return (
     <div className="chat-history">
