@@ -120,6 +120,26 @@ apiRouter.post("/orders", (req, res) => {
   res.status(201).send(newOrder);
 });
 
+// Clear all orders for the authenticated user
+apiRouter.delete('/orders', (req, res) => {
+    const authHeader = req.headers.authorization;
+    const token = authHeader?.split(' ')[1];
+  
+    if (!token) {
+      return res.status(401).json({ error: 'Authorization token required' });
+    }
+  
+    const user = users.find((u) => u.token === token);
+  
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid or expired token' });
+    }
+  
+    orders = orders.filter((order) => order.email !== user.email);
+  
+    res.status(204).end(); // Respond with No Content
+  });
+
 // Helper function to get orders
 function getOrders(email) {
   return orders.filter((order) => order.email === email);

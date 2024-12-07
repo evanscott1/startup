@@ -13,6 +13,7 @@ function ChatContainer(props) {
   - Enter a keyword to search for a joke.
   - \\o: Order the most recent joke.
   - \\orders: View your past orders.
+  - \\clearorders: Clear your past orders.
   - \\help: Show this help message.
     `;
 
@@ -32,6 +33,8 @@ function ChatContainer(props) {
       handleListOrders();
     } else if (newMessage === '\\help') {
       handleHelp();
+    } else if (newMessage === '\\clearorders') {
+      handleClearOrders();
     } else {
       handleJokeSearch(newMessage);
     }
@@ -128,11 +131,28 @@ function ChatContainer(props) {
   
     if (response.ok) {
       const data = await response.json();
-      const orderMessages = data.map((order) => `Order ID: ${order.orderId} - Joke: ${order.message}`).join('\n');
+      const orderMessages = data.map((order) => `Order ID: ${order.orderId} - Joke: ${order.message}`).join('\n\n');
       const botMessage = { sender: 'Henri', message: orderMessages || 'You have no past orders.', isBot: true };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } else {
       const botMessage = { sender: 'Henri', message: 'Failed to fetch orders. Please try again later.', isBot: true };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    }
+  };
+
+  const handleClearOrders = async () => {
+    const response = await fetch('/api/orders', {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+  
+    if (response.ok) {
+      const botMessage = { sender: 'Henri', message: 'Your orders have been cleared.', isBot: true };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    } else {
+      const botMessage = { sender: 'Henri', message: 'Failed to clear orders. Please try again later.', isBot: true };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     }
   };
