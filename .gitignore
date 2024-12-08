@@ -16,3 +16,5 @@ Thumbs.db
 
 /.vscode
 vite.config.js
+service/dbConfig.json
+service/mongoTest/dbConfig.json
