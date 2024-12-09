@@ -1,5 +1,11 @@
-const express = require("express");
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
+const express = require('express');
 const app = express();
+const DB = require('./database.js');
+
+const authCookieName = 'token';
+
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -8,11 +14,19 @@ app.listen(port, () => {
 });
 
 app.use(express.json());
+
+// Use the cookie parser middleware for tracking authentication tokens
+app.use(cookieParser());
+
 app.use(express.static("public"));
 
 const uuid = require("uuid");
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
+// Trust headers that are forwarded from the proxy so we can determine IP addresses
+app.set('trust proxy', true);
+
 
 // In-memory data storage
 let users = [
@@ -20,7 +34,7 @@ let users = [
 ];
 
 let orders = [];
-let orderCounter = 1; // Incremental counter for order IDs
+let orderCounter = 1;
 
 // CreateAuth: Create a new user
 apiRouter.post("/auth/create", async (req, res) => {
