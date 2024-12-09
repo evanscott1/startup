@@ -19,7 +19,6 @@ app.use(cookieParser());
 
 app.use(express.static("public"));
 
-const uuid = require("uuid");
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
@@ -73,6 +72,33 @@ apiRouter.delete("/auth/logout", (req, res) => {
   res.clearCookie(authCookieName);
   res.status(204).end();
 });
+
+apiRouter.get('/auth/status', async (req, res) => {
+  try {
+
+    const authToken = req.cookies[authCookieName];
+    
+    if (!authToken) {
+      return res.status(401).json({ authenticated: false });
+    }
+
+    const user = await DB.getUserByToken(authToken);
+
+    if (!user) {
+      return res.status(401).json({ authenticated: false });
+    }
+
+    return res.status(200).json({
+      authenticated: true,
+      email: user.email,
+    });
+  } catch (error) {
+    console.error('Error in /auth/status:', error);
+
+    return res.status(500).json({ authenticated: false, error: 'Internal server error' });
+  }
+});
+
 
 // secureApiRouter verifies credentials for endpoints
 const secureApiRouter = express.Router();
@@ -134,19 +160,3 @@ function setAuthCookie(res, authToken) {
     sameSite: 'strict',
   });
 }
-
-// Default error handler
-app.use(function (err, req, res, next) {
-  res.status(500).send({ type: err.name, message: err.message });
-});
-
-
-// Return the application's default page if the path is unknown
-app.use((_req, res) => {
-  res.sendFile('index.html', { root: 'public' });
-});
-
-
-const httpService = app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
