@@ -105,7 +105,6 @@ function ChatContainer(props) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
       body: JSON.stringify({ email, joke: lastBotMessage.message }),
     });
@@ -125,7 +124,6 @@ function ChatContainer(props) {
     const response = await fetch('/api/orders', {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
   
@@ -144,7 +142,6 @@ function ChatContainer(props) {
     const response = await fetch('/api/orders', {
       method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
   

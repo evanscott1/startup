@@ -12,7 +12,6 @@ export function Authenticated(props) {
     fetch(`/api/auth/logout`, {
       method: 'delete',
       headers: {
-        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     })
@@ -21,7 +20,6 @@ export function Authenticated(props) {
       })
       .finally(() => {
         localStorage.removeItem('email');
-        localStorage.removeItem('token');
         props.onLogout();
       });
   }
