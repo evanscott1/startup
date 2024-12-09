@@ -90,32 +90,18 @@ secureApiRouter.use(async (req, res, next) => {
 
 
 // GetOrders: Get orders for the authenticated user
-apiRouter.get("/orders", (req, res) => {
-  const authHeader = req.headers.authorization;
-  const token = authHeader?.split(" ")[1];
-  const user = users.find((u) => u.token === token);
+secureApiRouter.get("/orders", async (req, res) => {
+  const authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
 
-  if (!user) {
-    return res.status(401).send({ error: "Unauthorized" });
-  }
-
-  const userOrders = getOrders(user.email);
+  const userOrders = await DB.getOrders(user.email);
   res.send(userOrders);
 });
 
 // CreateOrder: Add a new order for the authenticated user
-apiRouter.post("/orders", (req, res) => {
-  const authHeader = req.headers.authorization;
-  const token = authHeader?.split(" ")[1];
-  const user = users.find((u) => u.token === token);
-
-  if (!user) {
-    return res.status(401).send({ error: "Unauthorized" });
-  }
-
-  if (!req.body.joke) {
-    return res.status(400).send({ error: "Joke message is required" });
-  }
+secureApiRouter.post("/orders", async (req, res) => {
+  const authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
 
   const newOrder = {
     email: user.email,
@@ -125,36 +111,20 @@ apiRouter.post("/orders", (req, res) => {
 
   orderCounter++;
 
-  orders.push(newOrder);
+  await DB.addOrder(newOrder);
 
   res.status(201).send(newOrder);
 });
 
 // Clear all orders for the authenticated user
-apiRouter.delete("/orders", (req, res) => {
-  const authHeader = req.headers.authorization;
-  const token = authHeader?.split(" ")[1];
+secureApiRouter.delete("/orders", async (req, res) => {
+  const authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
 
-  if (!token) {
-    return res.status(401).json({ error: "Authorization token required" });
-  }
+  await DB.deleteOrders(user.email);
 
-  const user = users.find((u) => u.token === token);
-
-  if (!user) {
-    return res.status(401).json({ error: "Invalid or expired token" });
-  }
-
-  orders = orders.filter((order) => order.email !== user.email);
-
-  res.status(204).end(); // Respond with No Content
+  res.status(204).end();
 });
-
-// Helper function to get orders
-function getOrders(email) {
-  return orders.filter((order) => order.email === email);
-}
-
 
 // setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
@@ -164,3 +134,19 @@ function setAuthCookie(res, authToken) {
     sameSite: 'strict',
   });
 }
+
+// Default error handler
+app.use(function (err, req, res, next) {
+  res.status(500).send({ type: err.name, message: err.message });
+});
+
+
+// Return the application's default page if the path is unknown
+app.use((_req, res) => {
+  res.sendFile('index.html', { root: 'public' });
+});
+
+
+const httpService = app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});

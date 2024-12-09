@@ -5,9 +5,9 @@ const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-const db = client.db('simon');
+const db = client.db('henri');
 const userCollection = db.collection('user');
-const scoreCollection = db.collection('score');
+const orderCollection = db.collection('order');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -26,11 +26,12 @@ function getUserByToken(token) {
   return userCollection.findOne({ token: token });
 }
 
-async function createUser(email, password) {
+async function createUser(name, email, password) {
   // Hash the password before we insert it into the database
   const passwordHash = await bcrypt.hash(password, 10);
 
   const user = {
+    name: name,
     email: email,
     password: passwordHash,
     token: uuid.v4(),
@@ -40,24 +41,33 @@ async function createUser(email, password) {
   return user;
 }
 
-async function addScore(score) {
-  return scoreCollection.insertOne(score);
+async function addOrder(order) {
+  return orderCollection.insertOne(order);
 }
 
-function getHighScores() {
-  const query = { score: { $gt: 0, $lt: 900 } };
+function getOrders(email) {
+  const query = { email: email };
   const options = {
-    sort: { score: -1 },
+    sort: { orderId: -1 },
     limit: 10,
   };
-  const cursor = scoreCollection.find(query, options);
+  const cursor = orderCollection.find(query, options);
   return cursor.toArray();
 }
+
+async function deleteOrders(email) {
+  const query = { email: email };
+  const result = await orderCollection.deleteMany(query);
+  return result.deletedCount;
+}
+
+
 
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
-  addScore,
-  getHighScores,
+  addOrder,
+  getOrders,
+  deleteOrders,
 };
