@@ -117,13 +117,23 @@ The project uses MongoDB as the persistent data store for managing user authenti
 - [x] **Restricts functionality**: Application features are restricted based on the authentication state, determined by validating the user's session token stored in a cookie. Unauthorized users cannot access restricted functionality.
 
 
-## WebSocket deliverable
+## WebSocket Deliverable
 
 ### Design
 
+The WebSocket implementation allows real-time communication between the client and server for order status updates. The backend listens for WebSocket connections, and the frontend initializes the connection when the chat container is rendered. Messages sent over the WebSocket include notifications about order statuses such as "processed," "shipped," or "out of stock."
+
 ### Details
 
-- [ ] **Backend listens for WebSocket connection**:
-- [ ] **Frontend makes WebSocket connection**:
-- [ ] **Data sent over WebSocket connection**:
-- [ ] **WebSocket data displayed**:
+- [x] **Backend listens for WebSocket connection**: The server initializes a WebSocket connection using `WebSocketServer` from the `ws` library. During the HTTP `upgrade` process, the server authenticates the user and associates the WebSocket connection with the authenticated user's email address. The server keeps track of active connections and uses the `notifyClient` function to send updates to specific users based on their email.
+
+- [x] **Frontend makes WebSocket connection**: The frontend establishes a WebSocket connection through the `orderNotifier` class when the `ChatContainer` component renders. The connection is closed when the user logs out and reinitialized when the user logs back in.
+
+- [x] **Data sent over WebSocket connection**: Notifications for order status updates are sent over the WebSocket connection. These include:
+    - `processed`: Order was successfully processed.
+    - `shipped`: Order was shipped.
+    - `outOfStock`: Item is out of stock.
+    - `shippingDelayed`: Shipping was delayed.
+
+- [x] **WebSocket data displayed**: The client listens for messages sent over the WebSocket connection. Order status updates are displayed as bot messages in the chat interface with the sender set to "Henri."
+
