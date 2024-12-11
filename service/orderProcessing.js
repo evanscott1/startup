@@ -1,6 +1,6 @@
 const { WebSocketServer } = require('ws');
+const DB = require("./database.js");
 const uuid = require('uuid');
-const jwt = require('jsonwebtoken'); // For verifying authentication tokens
 
 function orderProcessing(httpServer) {
   const wss = new WebSocketServer({ noServer: true });
@@ -9,15 +9,24 @@ function orderProcessing(httpServer) {
   let connections = [];
 
   // Handle WebSocket connection upgrade
-  httpServer.on('upgrade', (request, socket, head) => {
+  httpServer.on('upgrade', async (request, socket, head) => {
     const authToken = getAuthTokenFromRequest(request); // Extract token from headers
     if (!authToken) {
       socket.destroy();
       return;
     }
 
+  
     try {
-      const user = jwt.verify(authToken, 'your_secret_key'); // Verify token
+        // Use `await` here to ensure database access completes
+        const user = await DB.getUserByToken(authToken);
+  
+        if (!user) {
+          socket.destroy();
+          return;
+        }
+
+
       wss.handleUpgrade(request, socket, head, (ws) => {
         const connection = { id: uuid.v4(), alive: true, ws, email: user.email };
         connections.push(connection);
@@ -84,4 +93,4 @@ function getAuthTokenFromRequest(request) {
   return authCookie ? authCookie.split('=')[1] : null;
 }
 
-module.exports = { orderProcessing, simulateOrderProcessing };
+module.exports = { orderProcessing };

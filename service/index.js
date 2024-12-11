@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const express = require("express");
 const app = express();
 const DB = require("./database.js");
-const { orderProcessing, simulateOrderProcessing } = require('./orderProcessing.js');
+const { orderProcessing } = require('./orderProcessing.js');
 
 
 const authCookieName = "token";
@@ -166,4 +166,5 @@ const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-orderProcessing(httpService);
+const { simulateOrderProcessing } = orderProcessing(httpService);
+

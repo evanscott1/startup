@@ -24,16 +24,7 @@ class OrderNotifier {
         }
       };
     }
-  
-    // Send a new order message to the server
-    placeOrder(orderId, details) {
-      const message = {
-        type: 'newOrder',
-        orderId: orderId,
-        details: details,
-      };
-      this.socket.send(JSON.stringify(message));
-    }
+
   
     // Add a message handler for processing received messages
     addHandler(handler) {
