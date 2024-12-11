@@ -123,10 +123,9 @@ function ChatContainer(props) {
     }
   };
 
-  // Handles creating an order for the last joke
-  const handleCreateOrder = () => {
+  const handleCreateOrder = async () => {
     const lastBotMessage = messages.filter((msg) => msg.isBot).pop();
-
+  
     if (!lastBotMessage || !lastBotMessage.message) {
       const botMessage = {
         sender: 'Henri',
@@ -136,17 +135,78 @@ function ChatContainer(props) {
       setMessages((prevMessages) => [...prevMessages, botMessage]);
       return;
     }
+  
+    try {
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ joke: lastBotMessage.message }),
+      });
+  
+      if (response.ok) {
+        const order = await response.json(); // Retrieve order details from the server
+        const botMessage = {
+          sender: 'Henri',
+          message: `Order created successfully! Order ID: ${order.orderId}`,
+          isBot: true,
+        };
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
+      } else {
+        const botMessage = {
+          sender: 'Henri',
+          message: 'Failed to create order. Please try again later.',
+          isBot: true,
+        };
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
+      }
+    } catch (error) {
+      console.error('Error creating order:', error);
+      const botMessage = {
+        sender: 'Henri',
+        message: 'An error occurred while creating the order. Please try again later.',
+        isBot: true,
+      };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    }
+  };
+  
 
-    const orderId = Date.now().toString(); // Unique ID for the order
-    const orderDetails = { joke: lastBotMessage.message };
-    orderNotifier.placeOrder(orderId, orderDetails);
+  // Handles listing past orders
+  const handleListOrders = async () => {
+    const email = localStorage.getItem('email');
+    const response = await fetch('/api/orders', {
+      method: 'GET',
+      headers: {
+      },
+    });
 
-    const botMessage = {
-      sender: 'Henri',
-      message: 'Order created successfully!',
-      isBot: true,
-    };
-    setMessages((prevMessages) => [...prevMessages, botMessage]);
+    if (response.ok) {
+      const data = await response.json();
+      const orderMessages = data.map((order) => `Order ID: ${order.orderId} - Joke: ${order.message}`).join('\n\n');
+      const botMessage = { sender: 'Henri', message: orderMessages || 'You have no past orders.', isBot: true };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    } else {
+      const botMessage = { sender: 'Henri', message: 'Failed to fetch orders. Please try again later.', isBot: true };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    }
+  };
+
+  const handleClearOrders = async () => {
+    const response = await fetch('/api/orders', {
+      method: 'DELETE',
+      headers: {
+      },
+    });
+
+    if (response.ok) {
+      const botMessage = { sender: 'Henri', message: 'Your orders have been cleared.', isBot: true };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    } else {
+      const botMessage = { sender: 'Henri', message: 'Failed to clear orders. Please try again later.', isBot: true };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    }
   };
 
   return (

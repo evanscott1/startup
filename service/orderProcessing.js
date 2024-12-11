@@ -1,53 +1,67 @@
 const { WebSocketServer } = require('ws');
 const uuid = require('uuid');
+const jwt = require('jsonwebtoken'); // For verifying authentication tokens
 
-function peerProxy(httpServer) {
-  // Create a websocket object
+function orderProcessing(httpServer) {
   const wss = new WebSocketServer({ noServer: true });
 
-  // Handle the protocol upgrade from HTTP to WebSocket
-  httpServer.on('upgrade', (request, socket, head) => {
-    wss.handleUpgrade(request, socket, head, function done(ws) {
-      wss.emit('connection', ws, request);
-    });
-  });
-
-  // Keep track of all the connections
+  // Keep track of all connections
   let connections = [];
 
-  wss.on('connection', (ws) => {
-    const connection = { id: uuid.v4(), alive: true, ws: ws };
-    connections.push(connection);
+  // Handle WebSocket connection upgrade
+  httpServer.on('upgrade', (request, socket, head) => {
+    const authToken = getAuthTokenFromRequest(request); // Extract token from headers
+    if (!authToken) {
+      socket.destroy();
+      return;
+    }
 
-    // Handle incoming messages
-    ws.on('message', function message(data) {
-      try {
-        const parsedMessage = JSON.parse(data);
+    try {
+      const user = jwt.verify(authToken, 'your_secret_key'); // Verify token
+      wss.handleUpgrade(request, socket, head, (ws) => {
+        const connection = { id: uuid.v4(), alive: true, ws, email: user.email };
+        connections.push(connection);
 
-        if (parsedMessage.type === 'newOrder') {
-          console.log(`New order received: ${parsedMessage.orderId}`);
-          
-          // Simulate order processing
-          simulateOrderProcessing(ws, parsedMessage.orderId);
-        }
-      } catch (error) {
-        console.error('Failed to process message:', error);
-      }
-    });
+        ws.on('close', () => {
+          connections = connections.filter((conn) => conn.id !== connection.id);
+        });
 
-    // Remove the closed connection
-    ws.on('close', () => {
-      const pos = connections.findIndex((o) => o.id === connection.id);
-      if (pos >= 0) {
-        connections.splice(pos, 1);
-      }
-    });
-
-    // Respond to pong messages to keep the connection alive
-    ws.on('pong', () => {
-      connection.alive = true;
-    });
+        ws.on('pong', () => {
+          connection.alive = true;
+        });
+      });
+    } catch (err) {
+      socket.destroy();
+    }
   });
+
+  // Notify a specific client by email
+  function notifyClient(email, message) {
+    const clientConnection = connections.find((conn) => conn.email === email);
+    if (clientConnection) {
+      clientConnection.ws.send(JSON.stringify(message));
+    }
+  }
+
+  // Simulate order processing for a specific client
+  function simulateOrderProcessing(email, orderId) {
+    setTimeout(() => {
+      if (Math.random() < 0.1) {
+        notifyClient(email, { type: 'orderStatus', status: 'outOfStock', orderId });
+        return;
+      }
+
+      notifyClient(email, { type: 'orderStatus', status: 'processed', orderId });
+
+      setTimeout(() => {
+        if (Math.random() < 0.2) {
+          notifyClient(email, { type: 'orderStatus', status: 'shippingDelayed', orderId });
+        } else {
+          notifyClient(email, { type: 'orderStatus', status: 'shipped', orderId });
+        }
+      }, Math.random() * 5000 + 3000); // Shipping timer
+    }, Math.random() * 5000 + 3000); // Processing timer
+  }
 
   // Keep active connections alive
   setInterval(() => {
@@ -60,29 +74,14 @@ function peerProxy(httpServer) {
       }
     });
   }, 10000);
+
+  return { notifyClient, simulateOrderProcessing };
 }
 
-function simulateOrderProcessing(ws, orderId) {
-  // Simulate order processed
-  setTimeout(() => {
-    if (Math.random() < 0.1) {
-      // 10% chance of out of stock
-      ws.send(JSON.stringify({ type: 'orderStatus', status: 'outOfStock', orderId }));
-      return;
-    }
-
-    ws.send(JSON.stringify({ type: 'orderStatus', status: 'processed', orderId }));
-
-    // Simulate shipping
-    setTimeout(() => {
-      if (Math.random() < 0.2) {
-        // 20% chance of delayed shipping
-        ws.send(JSON.stringify({ type: 'orderStatus', status: 'shippingDelayed', orderId }));
-      } else {
-        ws.send(JSON.stringify({ type: 'orderStatus', status: 'shipped', orderId }));
-      }
-    }, Math.random() * 5000 + 3000); // Shipping timer
-  }, Math.random() * 5000 + 3000); // Processing timer
+function getAuthTokenFromRequest(request) {
+  const cookies = request.headers.cookie || '';
+  const authCookie = cookies.split(';').find((c) => c.trim().startsWith('token='));
+  return authCookie ? authCookie.split('=')[1] : null;
 }
 
-module.exports = { peerProxy };
+module.exports = { orderProcessing, simulateOrderProcessing };

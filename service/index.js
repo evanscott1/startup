@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const express = require("express");
 const app = express();
 const DB = require("./database.js");
-const { peerProxy } = require('./orderProcessing.js');
+const { orderProcessing, simulateOrderProcessing } = require('./orderProcessing.js');
 
 
 const authCookieName = "token";
@@ -122,7 +122,7 @@ secureApiRouter.get("/orders", async (req, res) => {
   res.send(userOrders);
 });
 
-// CreateOrder: Add a new order for the authenticated user
+// CreateOrder: Create order for the authenticated user
 secureApiRouter.post("/orders", async (req, res) => {
   const authToken = req.cookies[authCookieName];
   const user = await DB.getUserByToken(authToken);
@@ -136,6 +136,9 @@ secureApiRouter.post("/orders", async (req, res) => {
   orderCounter++;
 
   await DB.addOrder(newOrder);
+
+  // Start simulating order processing for this user
+  simulateOrderProcessing(user.email, newOrder.orderId);
 
   res.status(201).send(newOrder);
 });
@@ -163,4 +166,4 @@ const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-peerProxy(httpService);
+orderProcessing(httpService);
