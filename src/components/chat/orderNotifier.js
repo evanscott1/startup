@@ -6,6 +6,8 @@ class OrderNotifier {
       const port = window.location.port;
       const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
       this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+
+      let retryInterval = 1000;
   
       this.socket.onopen = () => {
         console.log('WebSocket connection established.');
@@ -14,6 +16,12 @@ class OrderNotifier {
       this.socket.onclose = () => {
         console.log('WebSocket connection closed.');
       };
+
+      this.socket.onerror = () => {
+        console.error('WebSocket error, retrying...');
+        setTimeout(connect, retryInterval);
+        retryInterval = Math.min(retryInterval * 2, 30000);
+    };
   
       this.socket.onmessage = async (msg) => {
         try {
