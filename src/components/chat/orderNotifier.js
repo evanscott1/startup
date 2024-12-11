@@ -3,11 +3,15 @@ class OrderNotifier {
     handlers = [];
   
     constructor() {
+      this.retryInterval = 1000;
+      this.maxRetryInterval = 30000;
+      this.connect();
+    }
+
+    connect() {
       const port = window.location.port;
       const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
       this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
-
-      let retryInterval = 1000;
   
       this.socket.onopen = () => {
         console.log('WebSocket connection established.');
@@ -15,6 +19,8 @@ class OrderNotifier {
   
       this.socket.onclose = () => {
         console.log('WebSocket connection closed.');
+        this.scheduleReconnect();
+        this.socket.close();
       };
 
       this.socket.onerror = () => {
@@ -32,6 +38,14 @@ class OrderNotifier {
         }
       };
     }
+
+    scheduleReconnect() {
+      console.log(`Retrying WebSocket connection in ${this.retryInterval / 1000} seconds...`);
+      setTimeout(() => {
+          this.retryInterval = Math.min(this.retryInterval * 2, this.maxRetryInterval); // Exponential backoff
+          this.connect(); // Retry connection
+      }, this.retryInterval);
+  }
 
   
     // Add a message handler for processing received messages
