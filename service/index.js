@@ -56,6 +56,7 @@ apiRouter.post("/auth/create", async (req, res) => {
 
 // GetAuth: Login an existing user
 apiRouter.post("/auth/login", async (req, res) => {
+  console.log("authlogin");
   const user = await DB.getUser(req.body.email);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
@@ -77,12 +78,14 @@ apiRouter.get('/auth/status', async (req, res) => {
   try {
 
     const authToken = req.cookies[authCookieName];
-    
+    console.log("authstatus");
     if (!authToken) {
       return res.status(401).json({ authenticated: false });
     }
-
+  console.log("Calling DB.");
     const user = await DB.getUserByToken(authToken);
+    console.log(user);
+  
 
     if (!user) {
       return res.status(401).json({ authenticated: false });
