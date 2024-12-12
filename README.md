@@ -58,7 +58,7 @@ The design was slightly modified to accomodate the requirements of the HTML deli
 - [x] **DB/Login**: Login page for users with a login form and submit button. Various other forms to modify DB data.
 - [x] **WebSocket**: The count of inventory amounts to ensure that customers do not purchase out of stock items.
 
-## CSS deliverable
+## CSS Deliverable
 
 ### Design
     https://colorhunt.co/palette/d6efd880af81508d4e1a5319
@@ -73,7 +73,7 @@ The design was slightly modified to accomodate the requirements of the HTML deli
 - [x] **Application text content**: Standard font across the app.
 - [x] **Application images**: Removed images that were previously used-- these will be brought back eventually when the database is able to hold them instead of the Github Repo. Created CSS based logo. Will need to design an image based logo for the tab image.
 
-## React deliverable
+## React Deliverable
 
 ### Design
     TODO: Add a shopping list feature in the bottom right corner of the chat. Make collapsable and allow result elements to be dragged and added to the list.
@@ -102,26 +102,38 @@ The design was slightly modified to accomodate the requirements of the HTML deli
 - [x] **Frontend calls service endpoints**: Ensured the frontend interacts with backend services to fetch product data, manage orders, and process customer queries.
 
 
-## DB/Login deliverable
+## DB/Login Deliverable
+
+### Design
+The project uses MongoDB as the persistent data store for managing user authentication and associated data. The database is hosted on a cloud database, providing a scalable and secure solution. User login and registration workflows interact with the database to store credentials and limit functionality based on authentication status.
+
+### Details
+- [x] **MongoDB Atlas database created**: A MongoDB Atlas cluster has been created to host the database.
+- [x] **Stores data in MongoDB**: User information, including credentials and session tokens, is stored persistently in MongoDB collections.
+- [x] **User registration**: New users can register by providing their name, email, and password. Credentials are stored in MongoDB, with hashing applied to the password.
+- [x] **Existing user**: The system validates existing users by checking their credentials against the stored values in MongoDB during login.
+- [x] **Creating/Getting orders**: Front-end allows for creation and retrieval of orders by an authenticated user.
+- [x] **Use MongoDB to store credentials**: The database stores user credentials, ensuring sensitive data like passwords are hashed before storage, following best practices for authentication.
+- [x] **Restricts functionality**: Application features are restricted based on the authentication state, determined by validating the user's session token stored in a cookie. Unauthorized users cannot access restricted functionality.
+
+
+## WebSocket Deliverable
 
 ### Design
 
-### Details
-
-- [ ] **MongoDB Atlas database created**:
-- [ ] **Stores data in MongoDB**:
-- [ ] **User registration**:
-- [ ] **existing user**:
-- [ ] **Use MongoDB to store credentials**:
-- [ ] **Restricts functionality**:
-
-## WebSocket deliverable
-
-### Design
+The WebSocket implementation allows real-time communication between the client and server for order status updates. The backend listens for WebSocket connections, and the frontend initializes the connection when the chat container is rendered. Messages sent over the WebSocket include notifications about order statuses such as "processed," "shipped," or "out of stock."
 
 ### Details
 
-- [ ] **Backend listens for WebSocket connection**:
-- [ ] **Frontend makes WebSocket connection**:
-- [ ] **Data sent over WebSocket connection**:
-- [ ] **WebSocket data displayed**:
+- [x] **Backend listens for WebSocket connection**: The server initializes a WebSocket connection using `WebSocketServer` from the `ws` library. During the HTTP `upgrade` process, the server authenticates the user and associates the WebSocket connection with the authenticated user's email address. The server keeps track of active connections and uses the `notifyClient` function to send updates to specific users based on their email.
+
+- [x] **Frontend makes WebSocket connection**: The frontend establishes a WebSocket connection through the `orderNotifier` class when the `ChatContainer` component renders. The connection is closed when the user logs out and reinitialized when the user logs back in.
+
+- [x] **Data sent over WebSocket connection**: Notifications for order status updates are sent over the WebSocket connection. These include:
+    - `processed`: Order was successfully processed.
+    - `shipped`: Order was shipped.
+    - `outOfStock`: Item is out of stock.
+    - `shippingDelayed`: Shipping was delayed.
+
+- [x] **WebSocket data displayed**: The client listens for messages sent over the WebSocket connection. Order status updates are displayed as bot messages in the chat interface with the sender set to "Henri."
+

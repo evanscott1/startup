@@ -1,14 +1,14 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ChatHeader from './chatHeader';
 import ChatHistory from './chatHistory';
 import ChatInput from './chatInput';
 import ChatFooter from './chatFooter';
+import { orderNotifier } from './orderNotifier';
 
 import './chatContainer.css';
 
 function ChatContainer(props) {
-  const defaultMessage =`
+  const defaultMessage = `
   Available commands: \n
   - Enter a keyword to search for a joke.
   - \\o: Order the most recent joke.
@@ -20,12 +20,31 @@ function ChatContainer(props) {
   const [messages, setMessages] = useState([
     { sender: 'Henri', message: defaultMessage, isBot: true },
   ]);
-  
+
+  // Set up orderNotifier for WebSocket communication
+  useEffect(() => {
+    const handleOrderUpdate = (event) => {
+      const botMessage = {
+        sender: 'Henri',
+        message: event.message,
+        isBot: true,
+      };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    };
+
+    orderNotifier.addHandler(handleOrderUpdate);
+
+    return () => {
+      orderNotifier.removeHandler(handleOrderUpdate);
+    };
+  }, []);
 
   const addMessage = async (newMessage) => {
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { sender: 'You', message: newMessage, isBot: false },
+    ]);
 
-    setMessages((prevMessages) => [...prevMessages, { sender: 'You', message: newMessage, isBot: false }]);
-  
     // Handle special commands
     if (newMessage === '\\o') {
       handleCreateOrder();
@@ -39,7 +58,7 @@ function ChatContainer(props) {
       handleJokeSearch(newMessage);
     }
   };
-  
+
   const resetChat = () => {
     const botMessage = {
       sender: 'Henri',
@@ -48,39 +67,54 @@ function ChatContainer(props) {
     };
     setMessages(() => [botMessage]);
   };
-  
-  const handleHelp = () => {
 
-    
-    const botMessage = { sender: 'Henri', message: defaultMessage.trim(), isBot: true };
+  const handleHelp = () => {
+    const botMessage = {
+      sender: 'Henri',
+      message: defaultMessage.trim(),
+      isBot: true,
+    };
     setMessages((prevMessages) => [...prevMessages, botMessage]);
   };
 
   const handleJokeSearch = async (searchTerm) => {
-    // Ensure searchTerm is a string
-    if (typeof searchTerm !== "string") {
-      const botMessage = { sender: 'Henri', message: 'Invalid input. Please enter a valid search term.', isBot: true };
+    if (typeof searchTerm !== 'string') {
+      const botMessage = {
+        sender: 'Henri',
+        message: 'Invalid input. Please enter a valid search term.',
+        isBot: true,
+      };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
       return;
     }
-  
+
     const words = searchTerm.trim().split(/\s+/);
-  
-    // Check for 3-word limit
+
     if (words.length > 3) {
-      const botMessage = { sender: 'Henri', message: 'Please enter no more than 3 words.', isBot: true };
+      const botMessage = {
+        sender: 'Henri',
+        message: 'Please enter no more than 3 words.',
+        isBot: true,
+      };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
       return;
     }
-  
-    const response = await fetch(`https://icanhazdadjoke.com/search?term=${encodeURIComponent(searchTerm)}`, {
-      headers: { Accept: 'application/json' },
-    });
-  
+
+    const response = await fetch(
+      `https://icanhazdadjoke.com/search?term=${encodeURIComponent(searchTerm)}`,
+      {
+        headers: { Accept: 'application/json' },
+      }
+    );
+
     const data = await response.json();
-  
+
     if (data.results.length === 0) {
-      const botMessage = { sender: 'Henri', message: 'No jokes found. Please try a different keyword.', isBot: true };
+      const botMessage = {
+        sender: 'Henri',
+        message: 'No jokes found. Please try a different keyword.',
+        isBot: true,
+      };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } else {
       const joke = data.results[0].joke;
@@ -88,47 +122,66 @@ function ChatContainer(props) {
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     }
   };
-  
-  
-  // Handles creating an order for the last joke
+
   const handleCreateOrder = async () => {
     const lastBotMessage = messages.filter((msg) => msg.isBot).pop();
   
     if (!lastBotMessage || !lastBotMessage.message) {
-      const botMessage = { sender: 'Henri', message: 'No joke to order. Please search for a joke first.', isBot: true };
+      const botMessage = {
+        sender: 'Henri',
+        message: 'No joke to order. Please search for a joke first.',
+        isBot: true,
+      };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
       return;
     }
   
-    const email = localStorage.getItem('email');
-    const response = await fetch('/api/orders', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-      body: JSON.stringify({ email, joke: lastBotMessage.message }),
-    });
+    try {
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ joke: lastBotMessage.message }),
+      });
   
-    if (response.ok) {
-      const botMessage = { sender: 'Henri', message: 'Order created successfully!', isBot: true };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-    } else {
-      const botMessage = { sender: 'Henri', message: 'Failed to create order. Please try again later.', isBot: true };
+      if (response.ok) {
+        const order = await response.json(); // Retrieve order details from the server
+        const botMessage = {
+          sender: 'Henri',
+          message: `Order created successfully! Order ID: ${order.orderId}`,
+          isBot: true,
+        };
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
+      } else {
+        const botMessage = {
+          sender: 'Henri',
+          message: 'Failed to create order. Please try again later.',
+          isBot: true,
+        };
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
+      }
+    } catch (error) {
+      console.error('Error creating order:', error);
+      const botMessage = {
+        sender: 'Henri',
+        message: 'An error occurred while creating the order. Please try again later.',
+        isBot: true,
+      };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     }
   };
   
+
   // Handles listing past orders
   const handleListOrders = async () => {
     const email = localStorage.getItem('email');
     const response = await fetch('/api/orders', {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
-  
+
     if (response.ok) {
       const data = await response.json();
       const orderMessages = data.map((order) => `Order ID: ${order.orderId} - Joke: ${order.message}`).join('\n\n');
@@ -144,10 +197,9 @@ function ChatContainer(props) {
     const response = await fetch('/api/orders', {
       method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
-  
+
     if (response.ok) {
       const botMessage = { sender: 'Henri', message: 'Your orders have been cleared.', isBot: true };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
@@ -156,13 +208,11 @@ function ChatContainer(props) {
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     }
   };
-  
-
 
   return (
     <div className="chat-container">
-      <ChatHeader logout={props.logout} onNewChat={resetChat}/>
-      <ChatHistory messages={messages}/>
+      <ChatHeader logout={props.logout} onNewChat={resetChat} />
+      <ChatHistory messages={messages} />
       <ChatInput onSend={addMessage} />
       <ChatFooter />
     </div>

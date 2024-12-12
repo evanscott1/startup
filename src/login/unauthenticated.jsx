@@ -50,11 +50,10 @@ export function Unauthenticated(props) {
       if (response?.status === 200) {
         const body = await response.json();
         localStorage.setItem('email', email);
-        localStorage.setItem('token', body.token);
         props.onLogin(email, AuthState.Authenticated);
       } else {
         const body = await response.json();
-        setDisplayError(`⚠ Error: ${body.msg}`);
+        setDisplayError(`⚠ Please check your email and password.`);
       }
     } catch (error) {
       setDisplayError('⚠ Network error: Unable to process request.');

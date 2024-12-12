@@ -39,8 +39,6 @@ export function Profile({onLogout}) {
 
           <button className='logout' type='button' onClick={onLogout}>Logout</button>
         </FormLayout>
-        <h4 className='title'>Notifications:</h4>
-        <h5 className='title'>Your order was shipped!</h5>
 </span>
 
 
